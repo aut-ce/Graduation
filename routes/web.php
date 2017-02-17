@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//\App\Http\Controllers\TestController::routes();

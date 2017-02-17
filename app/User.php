@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class User extends Authenticatable
+class User extends Eloquent
 {
     use Notifiable;
 
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'username', 'first_name', 'last_name', 'sex', 'mobile'
     ];
 
     /**
