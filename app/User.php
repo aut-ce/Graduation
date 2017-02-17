@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Moloquent\Eloquent\Model as Eloquent;
 
-class User extends Eloquent
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -15,7 +14,8 @@ class User extends Eloquent
      *
      * @var array
      */
-    protected $guarded = [
+    protected $fillable = [
+        'name', 'email', 'password',
     ];
 
     /**
