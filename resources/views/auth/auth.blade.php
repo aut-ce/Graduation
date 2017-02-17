@@ -3,24 +3,19 @@
 @section('content')
     <div class="signup-page g-auth">
         <nav class="navbar navbar-transparent navbar-absolute">
-            <div class="container">
+            <div class="container g-auth-header">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://www.creative-tim.com">{{'جشن فارق‌التحصیلی ورودی های ۹۲'}}</a>
-                </div>
+                {{--<div class="navbar-header ">--}}
+                    <img src="img/logo.jpg" class="img-circle img-raised img-responsive" alt="CEIT">
+                    <div class="navbar-brand">{{'جشن فارق‌التحصیلی ورودی های ۹۲'}}</div>
+                {{--</div>--}}
 
-                <div class="collapse navbar-collapse" id="navigation-example">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                        </li>
-                    </ul>
-                </div>
+                {{--<div class="collapse navbar-collapse" id="navigation-example">--}}
+                    {{--<ul class="nav navbar-nav navbar-right">--}}
+                        {{--<li>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
             </div>
         </nav>
         <div class="wrapper">

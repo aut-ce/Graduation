@@ -25,6 +25,14 @@
   .header-success{
     background: linear-gradient(60deg, #8c0000, #780000);
   }
+  .g-auth-header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    img{
+      width: 10rem;
+    }
+  }
 }
 .g-auth-reset.header-filter{
   min-height: 100vh;

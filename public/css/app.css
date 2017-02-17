@@ -107,6 +107,23 @@
   background: linear-gradient(60deg, #8c0000, #780000);
 }
 
+.g-auth .g-auth-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.g-auth .g-auth-header img {
+  width: 10rem;
+}
+
 .g-auth-reset.header-filter {
   min-height: 100vh;
 }
