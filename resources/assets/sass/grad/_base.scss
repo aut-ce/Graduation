@@ -1,3 +1,25 @@
-* {
-  font-family: "BYekan", "Roboto", "Helvetica", "Arial", sans-serif;
+.g-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.g-right-margin3{
+  margin-right: .3rem;
+}
+.g-right-margin6{
+  margin-right: .6rem;
+}
+.g-right-margin9{
+  margin-right: .9rem;
+}
+
+.g-left-margin3{
+  margin-left: .3rem;
+}
+.g-left-margin6{
+  margin-left: .6rem;
+}
+.g-left-margin9{
+  margin-left: .9rem;
 }

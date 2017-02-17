@@ -36,6 +36,79 @@
           font-feature-settings: 'liga';
 }
 
-* {
-  font-family: "BYekan", "Roboto", "Helvetica", "Arial", sans-serif;
+.g-flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.g-right-margin3 {
+  margin-right: .3rem;
+}
+
+.g-right-margin6 {
+  margin-right: .6rem;
+}
+
+.g-right-margin9 {
+  margin-right: .9rem;
+}
+
+.g-left-margin3 {
+  margin-left: .3rem;
+}
+
+.g-left-margin6 {
+  margin-left: .6rem;
+}
+
+.g-left-margin9 {
+  margin-left: .9rem;
+}
+
+.g-auth .card-signup .header {
+  padding: 1rem;
+}
+
+.g-auth .card-signup .content {
+  direction: rtl;
+  padding: 0 10px 0 30px;
+}
+
+.g-auth .checkbox {
+  text-align: center;
+}
+
+.g-auth .alert-danger {
+  direction: rtl;
+  font-size: 15px;
+}
+
+.g-auth .checkbox-material {
+  direction: ltr;
+}
+
+.g-auth .header-filter {
+  height: auto !important;
+}
+
+.g-auth-reset.header-filter {
+  min-height: 100vh;
+}
+
+.g-auth a.text-muted {
+  text-decoration: none;
+}
+
+.g-auth-reset .main {
+  width: 40%;
+  margin: 10rem auto;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
 }

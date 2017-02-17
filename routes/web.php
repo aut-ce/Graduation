@@ -11,12 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+\App\Http\Controllers\AuthController::routes();
 \App\Http\Controllers\TestController::routes();
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+\App\Http\Controllers\HomeController::routes();
