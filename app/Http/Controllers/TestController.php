@@ -9,10 +9,20 @@ use DB;
 
 class TestController extends Controller
 {
+
     public static function routes()
     {
-        Route::get('test', 'TestController@create_users');
+        Route::get('test', 'TestController@test');
     }
+
+    public function test(){
+        return view('test');
+    }
+
+
+
+
+
 
     public function select_users_from_all()
     {
@@ -41,7 +51,7 @@ class TestController extends Controller
             User::create(
                 [
                     'username' => $u['username'],
-                    'email' => $u['email'],
+                    'email' => strtolower($u['email']),
                     'mobile' => $u['mobile'],
                     'first_name' => $u['first_name'],
                     'last_name' => $u['last_name'],
@@ -51,7 +61,7 @@ class TestController extends Controller
             DB::collection('pass')->insert([
                 'username' => $u['username'],
                 'password' => $pass,
-                'email' => $u['email'],
+                'email' => strtolower($u['email']),
                 'mobile' => $u['mobile'],
             ]);
         }
