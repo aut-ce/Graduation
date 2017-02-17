@@ -1,0 +1,41 @@
+.g-auth{
+  .card-signup .header{
+    padding: 1rem;
+  }
+  .card-signup .content{
+    direction: rtl;
+    padding: 0 10px 0 30px;
+  }
+  .checkbox{
+    text-align: center;
+  }
+  .alert-danger{
+    direction: rtl;
+    font-size: 15px;
+  }
+  .checkbox-material{
+    direction: ltr;
+  }
+  .header-filter{
+    height: auto!important;
+  }
+  .header-filter:after{
+    background: rgba(255, 133, 133, .2);
+  }
+  .header-success{
+    background: linear-gradient(60deg, #8c0000, #780000);
+  }
+}
+.g-auth-reset.header-filter{
+  min-height: 100vh;
+}
+.g-auth a.text-muted{
+  text-decoration: none;
+}
+.g-auth-reset .main{
+  width: 40%;
+  margin: 10rem auto;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+
+}

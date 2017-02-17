@@ -98,6 +98,15 @@
   height: auto !important;
 }
 
+.g-auth .header-filter:after {
+  background: rgba(255, 133, 133, 0.2);
+}
+
+.g-auth .header-success {
+  background: -webkit-linear-gradient(30deg, #8c0000, #780000);
+  background: linear-gradient(60deg, #8c0000, #780000);
+}
+
 .g-auth-reset.header-filter {
   min-height: 100vh;
 }
@@ -111,4 +120,12 @@
   margin: 10rem auto;
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   padding: 1rem;
+}
+
+.temp_home .header.header-filter {
+  height: 100vh;
+}
+
+.temp_home .brand {
+  margin-top: 4rem;
 }
