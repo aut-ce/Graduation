@@ -15,25 +15,25 @@
                                     <div class="checkbox" style="text-align: right">
                                         <label>
                                             <span style="margin-right: 10px;">{{'شرکت میکنم'}}</span>
-                                            <input type="checkbox" name="optionsCheckboxes">
+                                            <input type="checkbox" name="participation">
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-6 col-xs-of label-floating is-empty">
                                     <label class="control-label">{{'تعداد افراد'}}</label>
-                                    <input type="email" class="form-control">
+                                    <input type="number" class="form-control" name="number">
                                     <span class="material-input"></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-xs-6 col-xs-of label-floating is-empty">
                                     <label class="control-label">{{'ایمیل'}}</label>
-                                    <input  type="email" class="form-control" style="direction: ltr;text-align: right" required>
+                                    <input  type="email" name="email" class="form-control" style="direction: ltr;text-align: right" required>
                                     <span class="material-input"></span>
                                 </div>
                                 <div class="form-group col-xs-6 col-xs-of label-floating is-empty">
                                     <label class="control-label">{{'شماره تلفن'}}</label>
-                                    <input type="number" class="form-control" required>
+                                    <input type="number" name="phone" class="form-control" required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -69,11 +69,16 @@
             }
         })
         $('.ask-participation .checkbox span').eq(0).css('color','#f55145');
-        $('form.ask-from').submit(function(e) {
-            if($('input[type="number"]').eq(0).val().match(/09\d{9}/g)){
-
+        $('form.ask-from').submit(function() {
+            if(!($('input[type="number"][name="phone"]').eq(0).val().match(/09\d{9}/g))){
+                toastr.error('شماره تلفن را درست وارد کنید')
                 return false;
             }
+            var conf = 0;
+            if(!$('.ask-participation .checkbox input').attr('checked'))
+                conf = window.confirm('از این که در جشن شرکت نمیکنید مطمئن هستید؟');
+            if(!conf)
+                return false;
         });
 
     })

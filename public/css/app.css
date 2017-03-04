@@ -147,6 +147,10 @@
   margin-top: 4rem;
 }
 
+.ask-participation .header.header-filter {
+  height: 100vh;
+}
+
 .ask-participation .ask-dialog {
   margin-top: 15rem;
   background-color: white;

@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     public static function routes(){
-        Route::get('/', 'HomeController@index');
+        Route::get('/', 'HomeController@index')->name('home');
     }
 
     /**
