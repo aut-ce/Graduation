@@ -1,0 +1,24 @@
+.ask-participation .ask-dialog{
+  margin-top: 15rem;
+  background-color: rgba(255,255,255,1);
+  direction: rtl;
+  box-shadow: $box_shadow_high;
+  .label-floating .control-label{
+    left: initial!important;
+  }
+  .submit-button{
+    width: 100%;
+  }
+  .checkbox {
+    direction: ltr;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}

@@ -146,3 +146,32 @@
 .temp_home .brand {
   margin-top: 4rem;
 }
+
+.ask-participation .ask-dialog {
+  margin-top: 15rem;
+  background-color: white;
+  direction: rtl;
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.ask-participation .ask-dialog .label-floating .control-label {
+  left: initial !important;
+}
+
+.ask-participation .ask-dialog .submit-button {
+  width: 100%;
+}
+
+.ask-participation .ask-dialog .checkbox {
+  direction: ltr;
+}
+
+.ask-participation .ask-dialog input[type="number"]::-webkit-outer-spin-button,
+.ask-participation .ask-dialog input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ask-participation .ask-dialog input[type="number"] {
+  -moz-appearance: textfield;
+}

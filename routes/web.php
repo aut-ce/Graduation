@@ -14,3 +14,4 @@
 \App\Http\Controllers\AuthController::routes();
 \App\Http\Controllers\TestController::routes();
 \App\Http\Controllers\HomeController::routes();
+\App\Http\Controllers\AskController::routes();

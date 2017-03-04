@@ -8,3 +8,5 @@ Homestead.json
 Homestead.yaml
 .env
 grad.iml
+.DS_Store
+

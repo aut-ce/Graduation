@@ -13,10 +13,10 @@
 
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/material-kit.css">
-    <link href="assets/css/demo.css" rel="stylesheet"/>
+    <link href="/assets/css/demo.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/app.css">
     <!-- Styles -->
 
@@ -29,16 +29,16 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
     <script>
         window.Laravel = $('meta[name="csrf-token"]').attr('content');
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/js/material.min.js"></script>
-    <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="assets/js/material-kit.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/js/material.min.js"></script>
+    <script src="/assets/js/nouislider.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="/assets/js/material-kit.js" type="text/javascript"></script>
 
     @stack('scripts')
 </body>
