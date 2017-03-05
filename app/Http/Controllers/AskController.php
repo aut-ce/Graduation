@@ -22,7 +22,7 @@ class AskController extends Controller
         return View::make('pages.ask_participation');
     }
     public function participationAction(Request $request){
-        $input = $request->only(['participation','number','email','phone']);
+        $input = $request->only(['participation','number','email','phone','show_phone']);
         $messages = [
             'email.required' => 'اطلاعات وارد شده کامل نیست',
             'email.email' => 'ایمیل وارد شده صحیح نیست',
@@ -39,6 +39,7 @@ class AskController extends Controller
         $user->primary_phone = $input['phone'];
         $user->participation = $input['participation'];
         $user->participation_number = $input['number'];
+        $user->show_phone = $input['show_phone'];
         $user->save();
         return redirect()->route('home')->with('success','اطلاعات با موفقیت ثبت شد');
 

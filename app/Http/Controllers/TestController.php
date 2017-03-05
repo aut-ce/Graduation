@@ -26,18 +26,20 @@ class TestController extends Controller
 
     public function select_users_from_all()
     {
-        $users = User::where('username', 'like', '9231%')->get();
+        $users = DB::table('all_users')->where('username', 'like', '9231%')
+            ->orWhere('username','9213035')
+            ->get();
         foreach ($users as $u) {
             $temp =
                 [
-                    '_id' => $u->id,
-                    'username' => $u->username,
-                    'email' => $u->email,
-                    'mobile' => $u->mobile,
-                    'first_name' => $u->aut_data['first_name'],
-                    'last_name' => $u->aut_data['last_name'],
-                    'sex' => $u->aut_data['sex'],
-                    'order' => substr($u->username, -3)
+                    '_id' => $u['_id'],
+                    'username' => $u['username'],
+                    'email' => $u['email'],
+                    'mobile' => $u['mobile'],
+                    'first_name' => $u['aut_data']['first_name'],
+                    'last_name' => $u['aut_data']['last_name'],
+                    'sex' => $u['aut_data']['sex'],
+                    'order' => substr($u['username'], -3)
                 ];
             DB::collection('user2')->insert($temp);
         }
