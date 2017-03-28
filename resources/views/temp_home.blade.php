@@ -1,19 +1,42 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="wrapper temp_home">
-        <div class="header header-filter" style="background-image: url('img/3.jpg');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="brand">
-                            <h2 class="">{{'سایت ورودی‌های ۹۲ دانشکده کامپیوتر'}}</h2>
-                            <h3 class="g-flex-center">{{'😒'}} {{'بقیش به زودی'}}</h3>
-                        </div>
-                    </div>
-                </div>
+@push('styles')
+<style>
+    body {
+        background: url('/img/5.jpg') no-repeat fixed;
+        background-size: cover;
+    }
+</style>
+@endpush
 
+@section('content')
+    <div class="wrapper home">
+        <div class="header header-filter">
+            <div class="container">
+
+                <div class="row sharing-area text-center">
+                    <h3 class="brand">{{'ورودی‌های ۹۲ دانشکده کامپیوتر'}}</h3>
+                    <a href="{{route('personal.main')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
+                        <i class="fa fa-twitter"></i>{{'صفحه شخصی'}}
+                    </a>
+                    <button class="soon btn btn-raised btn-facebook sharrre">
+                        <i class="fa fa-facebook-square"></i> {{'صفحه دوستان'}}
+                    </button>
+                    <button class="soon btn btn-raised btn-google-plus sharrre">
+                        <i class="fa fa-google-plus"></i>{{'ارسال محتوا'}}
+
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    $(function () {
+        $('.soon').click(function () {
+            toastr.info('به زودی')
+        })
+    })
+</script>
+@endpush

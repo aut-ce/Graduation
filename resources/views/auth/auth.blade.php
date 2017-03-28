@@ -6,7 +6,7 @@
             <div class="container g-auth-header">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 {{--<div class="navbar-header ">--}}
-                    <img src="img/logo.jpg" class="img-circle img-raised img-responsive" alt="CEIT">
+                    <img src="img/logo.jpg" class="img-raised img-responsive" alt="CEIT">
                     <div class="navbar-brand">{{'جشن فارق‌التحصیلی ورودی های ۹۲'}}</div>
                 {{--</div>--}}
 

@@ -17,7 +17,8 @@ class HomeController extends Controller
         $this->middleware('ask.participation');
     }
 
-    public static function routes(){
+    public static function routes()
+    {
         Route::get('/', 'HomeController@index')->name('home');
     }
 
@@ -30,4 +31,5 @@ class HomeController extends Controller
     {
         return view('temp_home');
     }
+
 }

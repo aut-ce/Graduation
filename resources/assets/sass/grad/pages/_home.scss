@@ -1,8 +1,21 @@
-.temp_home{
-  .header.header-filter{
-    height: 100vh;
+.home {
+  .header.header-filter {
+    min-height: 100vh;
+    height: 100%;
   }
-  .brand{
+  .sharing-area{
+    margin-top: 1rem;
+  }
+  .brand {
     margin-top: 4rem;
+  }
+}
+
+.home .main-nav {
+  background-color: rgba(255, 255, 255, .6);
+  padding: 1rem 0;
+  ul {
+    display: flex;
+    justify-content: center;
   }
 }

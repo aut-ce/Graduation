@@ -19,6 +19,7 @@
     <link href="/assets/css/demo.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/toastr.css">
+    @stack('styles')
     <!-- Styles -->
 
 
