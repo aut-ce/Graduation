@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class PersonalPageController extends Controller
 {
@@ -14,6 +15,12 @@ class PersonalPageController extends Controller
         Route::group(['prefix' => 'personal', 'as' => 'personal.'], function () {
             Route::get('/mini', 'PersonalPageController@mini')->name('mini');
             Route::post('/mini', 'PersonalPageController@miniAction')->name('miniAction');
+            Route::get('/questions', 'PersonalPageController@questions')->name('questions');
+            Route::post('/questions', 'PersonalPageController@questionsAction')->name('questionsAction');
+
+            Route::get('/ppic', 'PersonalPageController@ppic')->name('ppic');
+            Route::post('/ppic', 'PersonalPageController@ppicAction')->name('ppicAction');
+
             Route::get('/', function () {
                 return redirect()->route('personal.mini');
             })->name('main');
@@ -22,8 +29,11 @@ class PersonalPageController extends Controller
 
     public function mini()
     {
+        $user = Auth::user();
+        $answers = $user['mini_q'] ? json_decode($user['mini_q'], true) : [];
         return view('pages.personal.mini_question', [
-            'questions' => $this->questions()
+            'questions' => $this->mini_questions(),
+            'answers' => $answers
         ]);
     }
 
@@ -36,9 +46,54 @@ class PersonalPageController extends Controller
         return redirect()->route('home')->with('success', 'با موفقیت ثبت شد');
     }
 
-
-    protected function questions()
+    public function questions()
     {
+        $user = Auth::user();
+        $answers = $user['questions'] ? json_decode($user['questions'], true) : [];
+        return view('pages.personal.question', [
+            'questions' => $this->long_questions(),
+            'answers' => $answers
+        ]);
+    }
+
+    public function questionsAction(Request $request)
+    {
+        $user = Auth::user();
+        $q = $request->get('q');
+        $user->questions = json_encode($q);
+        $user->save();
+        return redirect()->route('home')->with('success', 'با موفقیت ثبت شد');
+    }
+
+    public function ppic()
+    {
+        $user = Auth::user();
+        if ($user['ppic'])
+            $ppic = cdn_url() . '/' . $user['ppic'];
+        else
+            $ppic = "/img/ppic.jpg";
+        return view('pages.personal.ppic', [
+            'ppic' => $ppic
+        ]);
+    }
+
+    public function ppicAction(Request $request)
+    {
+        $user = Auth::user();
+        if (!$request->hasFile('ppic'))
+            return redirect()->back()->withErrors(['ppic' => 'لطفا یک عکس انتخاب کنید.']);
+        Storage::disk('cdn')->makeDirectory('ppic');
+        $path = Storage::disk('cdn')
+            ->putFileAs('ppic', $request->file('ppic'), $user['username'] . '.jpg');
+        $user->ppic = $path;
+        $user->save();
+        return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
+    }
+
+
+    protected function mini_questions()
+    {
+        // 36
         return [
             "پاتوق",
             "یعقوب برقی",
@@ -75,6 +130,20 @@ class PersonalPageController extends Controller
             "بزرگترین اشتباه دوران کارشناسیت؟",
             "ردیف آخر",
             "اولین دوست"
+        ];
+    }
+
+    protected function long_questions()
+    {
+        // 7
+        return [
+            "بدترین سوتی ای که دادی چی بود؟",
+            "خنده دار ترین خاطره دوران کارشناسیت؟",
+            "توصیف چهار سال در قالب کلمات",
+            "چی فکر میکردی چی شد؟",
+            "آیا میدانستید…",
+            "سال 1404 داری چکار میکنی؟",
+            "به چه کاری که کردی تو این دوران خیلی افتخار می کنی؟",
         ];
     }
 }

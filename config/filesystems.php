@@ -47,7 +47,11 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'cdn' => [
+            'driver' => 'local',
+            'root' => env('CDN_PATH', base_path() . '/../grad_cdn'),
 
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

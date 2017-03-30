@@ -21,21 +21,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    @include('pages.personal.nav',['active'=>'mini'])
+                    @include('pages.personal.nav',['active'=>'ppic'])
                     <div class="col-md-8 col-md-offset-2 form-dialog">
-                        <form class="mini-question-from" action="" method="post">
+                        <form class="question-from" action="" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
-                            <h3 class="text-muted">{{'سوالات کوتاه پاسخ'}}</h3>
+                            <input type="file" class="ppic-input" style="display: none;" name="ppic">
+                            <h3 class="text-muted">{{'عکس پروفایل در نشریه'}}</h3>
                             <div class="row">
-                                @foreach($questions as $key=>$q)
-                                    <div class="form-group col-xs-12 col-sm-6 label-floating pull-right {{isset($answers[$q]) && $answers[$q]=='' ? 'is-empty': ""}}">
-                                        <label class="control-label">{{$q}}</label>
-                                        <input type="text" name="q[{{$q}}]" class="form-control"
-                                               style="text-align: right"
-                                               value="{{isset($answers[$q]) ? $answers[$q] : ""}}">
-                                        <span class="material-input"></span>
-                                    </div>
-                                @endforeach
+                                <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-4 text-center">
+                                    <img src="{{$ppic}}" alt="{{'عکس پرفایل'}}"
+                                         class="img-rounded img-responsive img-raised">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-4 text-center">
+                                    <div class="btn btn-info add-ppic-button">{{'بارگذاری عکس'}}</div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -59,15 +60,14 @@
 @push('scripts')
 <script>
     $(function () {
+        $('.add-ppic-button').click(function() {
+            $('form .ppic-input').click();
+            $("form .ppic-input").change(function () {
+                readURL($('form .ppic-input')[0], '.img-rounded');
+            });
+        });
         $('button.submit-button').click(function (e) {
-            var number = $('.mini-question-from input:text').filter(function () {
-                return this.value == "";
-            }).length;
-            if (number > 17) {
-                e.preventDefault();
-                toastr.error('حداقل به ۱۸ سوال پاسخ دهید');
-            }
-
+            $('form').submit();
         })
     })
 </script>

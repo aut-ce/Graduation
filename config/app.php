@@ -179,6 +179,7 @@ return [
 
         // added by sajjad
         Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 
     ],

@@ -37,6 +37,7 @@
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/helper_functions.js') }}"></script>
     <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/assets/js/material.min.js"></script>
     <script src="/assets/js/nouislider.min.js" type="text/javascript"></script>

@@ -17,14 +17,13 @@
                 <div class="row sharing-area text-center">
                     <h3 class="brand">{{'ورودی‌های ۹۲ دانشکده کامپیوتر'}}</h3>
                     <a href="{{route('personal.main')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
-                        <i class="fa fa-twitter"></i>{{'صفحه شخصی'}}
+                        {{'صفحه شخصی'}}
                     </a>
                     <button class="soon btn btn-raised btn-facebook sharrre">
-                        <i class="fa fa-facebook-square"></i> {{'صفحه دوستان'}}
+                        </i> {{'صفحه دوستان'}}
                     </button>
                     <button class="soon btn btn-raised btn-google-plus sharrre">
-                        <i class="fa fa-google-plus"></i>{{'ارسال محتوا'}}
-
+                        {{'ارسال محتوا'}}
                     </button>
                 </div>
             </div>

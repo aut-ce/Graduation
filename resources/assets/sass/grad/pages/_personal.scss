@@ -1,13 +1,17 @@
-.personal .form-dialog{
+.personal .form-dialog {
   margin-bottom: 3rem;
   margin-top: 3rem;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255, 255, 255, 1);
   direction: rtl;
   box-shadow: $box_shadow_high;
-  .label-floating .control-label{
-    left: initial!important;
+  .label-floating .control-label {
+    left: initial !important;
   }
-  .submit-button{
+  .submit-button {
+    width: 100%;
+  }
+  .img-rounded {
+    max-height: 30rem;
     width: 100%;
   }
 }
