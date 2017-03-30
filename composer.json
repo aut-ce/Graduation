@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-ide-helper": "^2.3",
-        "jenssegers/heodb": ">=3.1-dev",
+        "jenssegers/mongodb": ">=3.1-dev",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "morilog/jalali": "^2.2"
