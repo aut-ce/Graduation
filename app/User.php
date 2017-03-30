@@ -26,4 +26,11 @@ class User extends Eloquent
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function files(){
+        return $this->hasMany(File::class);
+    }
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
 }

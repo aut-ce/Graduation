@@ -38,8 +38,8 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-9"></div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-6 col-md-9"></div>
+                                <div class="col-xs-6 col-md-3">
                                     <button class="btn btn-success submit-button">{{'ثبت'}}
                                         <div class="ripple-container"></div>
                                     </button>

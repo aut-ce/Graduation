@@ -49,3 +49,5 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+/_ide_helper.php
+/.phpstorm.meta.php

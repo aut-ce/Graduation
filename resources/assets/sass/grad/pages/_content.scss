@@ -1,0 +1,35 @@
+.content .form-dialog {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  background-color: rgba(255, 255, 255, 1);
+  direction: rtl;
+  box-shadow: $box_shadow_high;
+  .label-floating .control-label {
+    left: initial !important;
+  }
+  .form-group.file, .form-group.picture {
+    direction: ltr;
+    input {
+      direction: rtl;
+    }
+    .btn-round {
+      border-radius: 30px !important;
+    }
+  }
+  .submit-button {
+    width: 100%;
+  }
+}
+
+.content .list table {
+  direction: rtl;
+  td, th {
+    text-align: right;
+  }
+  .td-actions .btn{
+    margin: 0;
+  }
+  .td-actions .tooltip-inner {
+    font-family: IRANSans !important;
+  }
+}

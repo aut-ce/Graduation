@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class PersonalPageController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('ask.participation');
+    }
+
     public static function routes()
     {
 

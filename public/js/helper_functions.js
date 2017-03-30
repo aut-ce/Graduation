@@ -14,3 +14,4 @@ function readURL(input, id_element_to_preview) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+

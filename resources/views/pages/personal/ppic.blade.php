@@ -23,7 +23,7 @@
                 <div class="row">
                     @include('pages.personal.nav',['active'=>'ppic'])
                     <div class="col-md-8 col-md-offset-2 form-dialog">
-                        <form class="question-from" action="" method="post" enctype="multipart/form-data">
+                        <form class="file-from" action="" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <input type="file" class="ppic-input" style="display: none;" name="ppic">
                             <h3 class="text-muted">{{'عکس پروفایل در نشریه'}}</h3>
@@ -40,8 +40,8 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-9"></div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-6 col-md-9"></div>
+                                <div class="col-xs-6 col-md-3">
                                     <button class="btn btn-success submit-button">{{'ثبت'}}
                                         <div class="ripple-container"></div>
                                     </button>
