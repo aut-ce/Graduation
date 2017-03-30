@@ -49,7 +49,7 @@ class PersonalPageController extends Controller
         $q = $request->get('q');
         $user->mini_q = json_encode($q);
         $user->save();
-        return redirect()->route('home')->with('success', 'با موفقیت ثبت شد');
+        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
     }
 
     public function questions()
@@ -68,7 +68,7 @@ class PersonalPageController extends Controller
         $q = $request->get('q');
         $user->questions = json_encode($q);
         $user->save();
-        return redirect()->route('home')->with('success', 'با موفقیت ثبت شد');
+        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
     }
 
     public function ppic()
