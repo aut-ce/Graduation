@@ -62,11 +62,14 @@
             var number = $('.question-from textarea').filter(function () {
                 return this.value == "";
             }).length;
-            if (number > 4) {
+            if($('.question-from textarea')[0].value == ""){
+                toastr.error('به سوال توصیف چهار سال حتما پاسخ دهید');
+                e.preventDefault();
+            }
+            else if (number > 4) {
                 e.preventDefault();
                 toastr.error('حداقل به ۳ سوال پاسخ دهید');
             }
-
         })
     })
 </script>
