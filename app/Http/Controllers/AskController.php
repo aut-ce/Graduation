@@ -41,7 +41,7 @@ class AskController extends Controller
         $user->participation_number = $input['number'];
         $user->show_phone = $input['show_phone'];
         $user->save();
-        return redirect()->route('home')->with('success','اطلاعات با موفقیت ثبت شد');
+        return redirect()->route('landing')->with('success','اطلاعات با موفقیت ثبت شد');
 
     }
 }

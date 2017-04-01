@@ -26,10 +26,10 @@
                         <form class="file-from" action="" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <input type="file" class="ppic-input" style="display: none;" name="ppic">
-                            <h3 class="text-muted">{{'عکس پروفایل در نشریه'}}</h3>
+                            <h3 class="text-muted">{{'عکس خاطره‌انگیز در نشریه'}}</h3>
                             <div class="row">
                                 <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-4 text-center">
-                                    <img src="{{$ppic}}" alt="{{'عکس پرفایل'}}"
+                                    <img src="{{$ppic}}" alt="{{'عکس ماندگار'}}"
                                          class="img-rounded img-responsive img-raised">
                                 </div>
                             </div>

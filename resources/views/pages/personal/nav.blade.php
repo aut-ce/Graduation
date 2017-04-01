@@ -6,7 +6,7 @@
             </a></li>
         <li class="{{$active == 'ppic' ? 'active' : ''}}"><a href="{{route('personal.ppic')}}">
                 <i class="material-icons">schedule</i>
-                {{'تصویر پرفایل در نشریه'}}
+                {{'تصویر خاطره انگیز در نشریه'}}
             </a></li>
         <li class="{{$active == 'questions' ? 'active' : ''}}"><a href="{{route('personal.questions')}}">
                 <i class="material-icons">list</i>
