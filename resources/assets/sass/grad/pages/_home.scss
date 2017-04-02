@@ -9,6 +9,14 @@
   .brand {
     margin-top: 4rem;
   }
+  .description{
+    margin-top: 1rem;
+    text-align: right;
+    padding: 1rem;
+    direction: rtl;
+    color: #000!important;
+    background-color: rgba(255, 255, 255, .6);
+  }
 }
 
 .home .main-nav {

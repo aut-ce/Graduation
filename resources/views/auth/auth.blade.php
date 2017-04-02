@@ -7,7 +7,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 {{--<div class="navbar-header ">--}}
                     <img src="img/logo.jpg" class="img-raised img-responsive" alt="CEIT">
-                    <div class="navbar-brand">{{'جشن فارق‌التحصیلی ورودی های ۹۲'}}</div>
+                    <div class="navbar-brand">{{'جشن فارغ‌التحصیلی ورودی های ۹۲'}}</div>
                 {{--</div>--}}
 
                 {{--<div class="collapse navbar-collapse" id="navigation-example">--}}
