@@ -63,7 +63,7 @@ class ContentController extends Controller
         if (!$request->hasFile('file') && $file['path'] == -1)
             return redirect()->back()->withErrors(['ppic' => 'لطفا یک فایل انتخاب کنید']);
         Storage::disk('cdn')->makeDirectory('files/' . $user['username']);
-        if($request->hasFile('file') || $file['path'] == -1){
+        if ($request->hasFile('file') || $file['path'] == -1) {
             $path = Storage::disk('cdn')
                 ->putFileAs('files/' . $user['username'], $sent_file, $file['id'] . '.' . $sent_file->extension());
             $file->path = $path;
@@ -81,8 +81,10 @@ class ContentController extends Controller
         return redirect()->back()->with(['success' => 'با موفقیت حذف شد']);
     }
 
-    public function article(Article $article = null)
+    public function article(Article $article = null, Request $request)
     {
+        $for = $request->get('for');
+        $article->load('texter');
         if (!$article) {
             $user = Auth::user();
             $user->articles()->where('title', -1)->forceDelete();
@@ -90,7 +92,8 @@ class ContentController extends Controller
             $user->articles()->save($article);
         }
         return view('pages.content.article', [
-            'article' => $article
+            'article' => $article,
+            'for' => $for,
         ]);
     }
 
@@ -106,6 +109,8 @@ class ContentController extends Controller
                 ->putFileAs('articles', $sent_file, $article['id'] . '.jpg');
             $article->picture = $path;
         }
+        if ($request->has('texter'))
+            $article->texter_id = $request['texter'];
         $article->title = $request['title'];
         $article->content = $request['description'];
         $article->save();

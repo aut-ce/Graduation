@@ -19,6 +19,7 @@
     <link href="/assets/css/demo.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/toastr.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
     @stack('styles')
     <!-- Styles -->
 
@@ -27,6 +28,7 @@
 </head>
 <body>
     <div id="app" class="index-page">
+        <a href="{{route('landing')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
         @yield('content')
     </div>
 
@@ -42,6 +44,7 @@
     <script src="/assets/js/material.min.js"></script>
     <script src="/assets/js/nouislider.min.js" type="text/javascript"></script>
     <script src="/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="/assets/js/select2.full.js" type="text/javascript"></script>
     <script src="/assets/js/material-kit.js" type="text/javascript"></script>
 
     @include('includes.toasts')

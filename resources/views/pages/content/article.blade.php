@@ -23,19 +23,41 @@
                 <div class="row">
                     @include('pages.content.nav',['active'=>'article'])
                     <div class="col-md-8 col-md-offset-2 form-dialog">
-                        <form class="article-from" action="{{route('content.articleAction')}}" method="post" enctype="multipart/form-data">
+                        <form class="article-from" action="{{route('content.articleAction')}}" method="post"
+                              enctype="multipart/form-data">
                             {{csrf_field()}}
                             <input type="hidden" name="id" value="{{$article['id']}}">
-                            <h3 class="text-muted">{{'ارسال مطلب برای نشریه'}}</h3>
+                            @if($for || $article['texter'])
+                                <h3 class="text-muted">{{'ارسال مطلب مطلب برای صفحه دوستان'}}</h3>
+                            @else
+                                <h3 class="text-muted">{{'ارسال مطلب برای نشریه'}}</h3>
+                            @endif
                             <div class="row">
                                 <div class="form-group col-xs-12 col-sm-6 label-floating pull-right {{ $article['title']=='' ? 'is-empty': ""}}">
                                     <label class="control-label">{{'عنوان'}}</label>
                                     <input type="text" name="title" class="form-control" required
-                                           style="text-align: right" value="{{$article['title']==-1 || !$article['title'] ?'': $article['title']}}">
+                                           style="text-align: right"
+                                           value="{{$article['title']==-1 || !$article['title'] ?'': $article['title']}}">
                                     <span class="material-input"></span>
                                 </div>
-
-                                <div class="form-group col-xs-12 col-sm-6 pull-right picture">
+                                @if($for || $article['texter'])
+                                    <div class="form-group label-floating col-xs-12 col-sm-6">
+                                        <label class="control-label">{{'برای صفحه‌ی:'}}</label>
+                                        @include('includes.select2-users-search',[
+                                        'select_url'=>route('select.allUsers'),
+                                        'default' => isset($article['texter']) ? $article['texter'] : ''
+                                        ])
+                                    </div>
+                                @endif
+                                <div class="form-group col-xs-12 label-floating pull-right {{$article['content']=='' ? 'is-empty': ""}}">
+                                    <label class="control-label">{{'متن'}}</label>
+                                    <textarea type="text" name="description" class="form-control" rows="10" required
+                                              style="text-align: right">{{$article['content'] ?: ""}}</textarea>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-4 pull-right picture">
                                     <div class="input-group">
                                         <input type="text" readonly="" class="form-control" value="انتخاب تصویر...">
                                         <span class="input-group-btn input-group-sm">
@@ -45,13 +67,12 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="form-group col-xs-12 label-floating pull-right {{$article['content']=='' ? 'is-empty': ""}}">
-                                    <label class="control-label">{{'متن'}}</label>
-                                    <textarea type="text" name="description" class="form-control" rows="10" required
-                                              style="text-align: right">{{$article['content'] ?: ""}}</textarea>
-                                    <span class="material-input"></span>
-                                </div>
 
+                                <div class="form-group col-xs-12 col-sm-6 pull-right art-image">
+                                    @if($article['picture'])
+                                        <img src="{{cdn($article['picture'])}}" alt="">
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="row">

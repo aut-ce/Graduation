@@ -39,3 +39,8 @@ function dateFormat($date)
     return str_replace($months_indirect, $months, $res);
 }
 
+
+function cdn($path){
+    return cdn_url() . '/' . $path;
+}
+

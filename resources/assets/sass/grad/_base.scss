@@ -1,4 +1,9 @@
-
+.btn-danger.return-home{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
 .g-flex-center {
   display: flex;
   justify-content: center;

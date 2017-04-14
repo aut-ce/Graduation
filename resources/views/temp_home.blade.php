@@ -22,6 +22,9 @@
                     <a href="{{route('content.main')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'ارسال محتوا'}}
                     </a>
+                    <a href="{{route('content.article')}}?for=1" class="btn btn-raised btn-facebook sharrre">
+                        {{'ارسال متن برای صفحه دوستان'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">

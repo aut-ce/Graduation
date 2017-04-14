@@ -33,4 +33,9 @@ class User extends Eloquent
     public function articles(){
         return $this->hasMany(Article::class);
     }
+
+    // articles written for this user
+    public function texts(){
+        return $this->hasMany(Article::class,'texter_id');
+    }
 }
