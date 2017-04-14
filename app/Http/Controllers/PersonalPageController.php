@@ -90,7 +90,7 @@ class PersonalPageController extends Controller
             return redirect()->back()->withErrors(['ppic' => 'لطفا یک عکس انتخاب کنید.']);
         Storage::disk('cdn')->makeDirectory('ppic');
         $path = Storage::disk('cdn')
-            ->putFileAs('ppic', $request->file('ppic'), $user['username'] . '.jpg');
+            ->putFileAs('ppic', $request->file('ppic'), $user['id'] . '.jpg');
         $user->ppic = $path;
         $user->save();
         return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);

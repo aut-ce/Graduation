@@ -103,7 +103,7 @@ class ContentController extends Controller
             $sent_file = $request->file('picture');
             Storage::disk('cdn')->makeDirectory('articles/');
             $path = Storage::disk('cdn')
-                ->putFileAs('articles', $sent_file, $article['id'] . '.' . $sent_file->clientExtension());
+                ->putFileAs('articles', $sent_file, $article['id'] . '.jpg');
             $article->picture = $path;
         }
         $article->title = $request['title'];
