@@ -18,3 +18,4 @@
 \App\Http\Controllers\PersonalPageController::routes();
 \App\Http\Controllers\ContentController::routes();
 \App\Http\Controllers\SelectController::routes();
+\App\Http\Controllers\BestController::routes();

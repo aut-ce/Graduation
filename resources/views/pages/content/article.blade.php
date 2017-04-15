@@ -45,7 +45,8 @@
                                         <label class="control-label">{{'برای صفحه‌ی:'}}</label>
                                         @include('includes.select2-users-search',[
                                         'select_url'=>route('select.allUsers'),
-                                        'default' => isset($article['texter']) ? $article['texter'] : ''
+                                        'default' => isset($article['texter']) ? $article['texter'] : '',
+                                        'select_name' => 'texter'
                                         ])
                                     </div>
                                 @endif

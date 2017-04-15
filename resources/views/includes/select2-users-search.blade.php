@@ -1,4 +1,4 @@
-<select class="js-example-basic-single" name="texter" id="user-name" class="user-name select2">
+<select class="js-example-basic-single" name="{{$select_name}}" id="user-name" class="user-name select2">
     @if($default)
         <option value="{{$default['id']}}">{{$default['first_name'].' '.$default['last_name']}}</option>
     @endif
