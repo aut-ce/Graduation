@@ -57,5 +57,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'ask.participation' => \App\Http\Middleware\AskParticipation::class,
+        'entrance' => \App\Http\Middleware\EntracneYear::class,
     ];
 }

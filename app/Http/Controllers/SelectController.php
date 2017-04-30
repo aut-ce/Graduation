@@ -25,10 +25,12 @@ class SelectController extends Controller
     {
         $requested = $request->get('q');
         $users = User::where('first_name', 'LIKE', $requested . '%')
+            ->where('others', 'exists', false)
             ->take(10)
             ->get(['id', 'first_name','last_name']);
         if (count($users) == 0)
             $users = User::where('last_name', 'LIKE', '%' . $requested . '%')
+                ->where('others', 'exists', false)
                 ->take(10)
                 ->get(['id', 'first_name','last_name']);
         return $this->userData($users);

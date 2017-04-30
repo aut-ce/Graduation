@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AskParticipation
+class EntracneYear
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class AskParticipation
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if($user->participation_number || isset($user['others']))
+        if(!isset($user['others']))
             return $next($request);
         else
-            return redirect()->route('ask.participation');
+            return redirect()->route('landing')->withErrors(['شما به این قسمت دسترسی ندارید']);
     }
 }

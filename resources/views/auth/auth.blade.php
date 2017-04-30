@@ -32,10 +32,17 @@
                                     <p class="text-divider">{{'برای غیر ۹۲ ایا'}}</p>
                                     <div class="content">
                                         <div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">face</i>
-										</span>
-                                            <input type="text" required name="name" class="form-control" placeholder="{{'نام ...'}}">
+										    <span class="input-group-addon">
+											    <i class="material-icons">face</i>
+										    </span>
+                                            <input type="text" required name="first_name" class="form-control" placeholder="{{'نام'}}">
+                                        </div>
+
+                                        <div class="input-group">
+										    <span class="input-group-addon">
+											    <i class="material-icons">face</i>
+										    </span>
+                                            <input type="text" required name="last_name" class="form-control" placeholder="{{'نام خانوادگی'}}">
                                         </div>
 
                                         <div class="input-group">
@@ -100,19 +107,6 @@
                         </div>
                     </div>
                 </div>
-                @if ($errors->all())
-                    <div class="alert alert-danger container">
-                        <div class="container-fluid">
-                            <div class="alert-icon">
-                                <i class="material-icons">error_outline</i>
-                            </div>
-                            <button type="button" class="close g-left-margin9" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                            </button>
-                            {{'خطا: '}} {{ $errors->first() }}
-                        </div>
-                    </div>
-                @endif
 
                 <footer class="footer">
                     <div class="container">

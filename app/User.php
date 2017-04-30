@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scope\EntranceYearScope;
 use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Eloquent;
 
@@ -15,7 +16,7 @@ class User extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'username', 'first_name', 'last_name', 'sex', 'mobile'
+        'email', 'password', 'username', 'first_name', 'last_name', 'sex', 'mobile','others'
     ];
 
     /**
@@ -37,5 +38,22 @@ class User extends Eloquent
     // articles written for this user
     public function texts(){
         return $this->hasMany(Article::class,'texter_id');
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+     //   static::addGlobalScope(new EntranceYearScope());
+    }
+
+    public function scopeMain($query)
+    {
+        return $query->where('others', 'exists', false);
     }
 }

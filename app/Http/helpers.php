@@ -6,11 +6,13 @@
  * Time: 03:42
  */
 
-function cdn_url(){
-    return env('CDN_URL','http://cdn.grad.scr12.ir');
+function cdn_url()
+{
+    return env('CDN_URL', 'http://cdn.grad.scr12.ir');
 }
 
-function cdn_path(){
+function cdn_path()
+{
     return env('CDN_PATH', base_path() . '../grad_cdn');
 }
 
@@ -33,14 +35,53 @@ function dateFormat($date)
     else
         $res = persianNumbers(jdate($date)->ago());
 
-    $months_indirect = ['فرو','ارد','خرد','تیر','مرد','شهر','مهر','آبا','آذر','دی','بهم','اسف'];
-    $months = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+    $months_indirect = ['فرو', 'ارد', 'خرد', 'تیر', 'مرد', 'شهر', 'مهر', 'آبا', 'آذر', 'دی', 'بهم', 'اسف'];
+    $months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
 
     return str_replace($months_indirect, $months, $res);
 }
 
 
-function cdn($path){
+function cdn($path)
+{
     return cdn_url() . '/' . $path;
+    collect();
+}
+
+function forgetKeys(\Illuminate\Support\Collection $collection, $keys)
+{
+    if (!is_array($keys))
+        $keys = [$keys];
+
+    return $collection->map(function ($item) use ($keys) {
+        $res = [];
+        if ($item instanceof \Jenssegers\Mongodb\Eloquent\Model)
+            $item = collect($item->toArray());
+        foreach ($item as $key => $value) {
+            if (!in_array($key, $keys))
+                $res[$key] = $value;
+        }
+        return $res;
+    });
+
+}
+
+function selectKeys(\Illuminate\Support\Collection $collection, $keys)
+{
+    if (!is_array($keys))
+        $keys = [$keys];
+
+    return $collection->map(function ($item) use ($keys) {
+        $res = [];
+        if ($item instanceof \Jenssegers\Mongodb\Eloquent\Model)
+            $item = collect($item->toArray());
+        foreach ($item as $key => $value) {
+            if (in_array($key, $keys))
+                $res[$key] = $value;
+        }
+        return $res;
+    });
+
+
 }
 

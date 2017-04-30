@@ -13,6 +13,7 @@ class PersonalPageController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('ask.participation');
+        $this->middleware('entrance');
     }
 
     public static function routes()

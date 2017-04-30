@@ -16,7 +16,8 @@ class TestController extends Controller
     }
 
     public function test(){
-        dd(json_decode(User::where('username','9231069')->first()->mini_q));
+        return 'خیلی باهوشیاااا';
+        return selectKeys(User::get(),['first_name','last_name','username']);
         return view('pages.ask_participation');
     }
 
