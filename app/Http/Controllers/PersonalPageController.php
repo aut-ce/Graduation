@@ -28,6 +28,9 @@ class PersonalPageController extends Controller
             Route::get('/ppic', 'PersonalPageController@ppic')->name('ppic');
             Route::post('/ppic', 'PersonalPageController@ppicAction')->name('ppicAction');
 
+            Route::get('/cover', 'PersonalPageController@cover')->name('cover');
+            Route::post('/cover', 'PersonalPageController@coverAction')->name('coverAction');
+
             Route::get('/', function () {
                 return redirect()->route('personal.mini');
             })->name('main');
@@ -93,6 +96,31 @@ class PersonalPageController extends Controller
         $path = Storage::disk('cdn')
             ->putFileAs('ppic', $request->file('ppic'), $user['id'] . '.jpg');
         $user->ppic = $path;
+        $user->save();
+        return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
+    }
+
+    public function cover()
+    {
+        $user = Auth::user();
+        if ($user['cover'])
+            $cover = cdn_url() . '/' . $user['cover'];
+        else
+            $cover = "/img/ppic.jpg";
+        return view('pages.personal.cover', [
+            'cover' => $cover
+        ]);
+    }
+
+    public function coverAction(Request $request)
+    {
+        $user = Auth::user();
+        if (!$request->hasFile('cover'))
+            return redirect()->back()->withErrors(['cover' => 'لطفا یک عکس انتخاب کنید.']);
+        Storage::disk('cdn')->makeDirectory('cover');
+        $path = Storage::disk('cdn')
+            ->putFileAs('cover', $request->file('cover'), $user['id'] . '.jpg');
+        $user->cover = $path;
         $user->save();
         return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
     }

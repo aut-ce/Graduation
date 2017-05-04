@@ -3,14 +3,22 @@
         <li class="{{$active == 'mini' ? 'active' : ''}}"><a href="{{route('personal.mini')}}">
                 <i class="material-icons">dashboard</i>
                 {{'سوالات کوتاه پاسخ'}}
-            </a></li>
+            </a>
+        </li>
         <li class="{{$active == 'ppic' ? 'active' : ''}}"><a href="{{route('personal.ppic')}}">
                 <i class="material-icons">schedule</i>
                 {{'تصویر خاطره انگیز در نشریه'}}
-            </a></li>
+            </a>
+        </li>
         <li class="{{$active == 'questions' ? 'active' : ''}}"><a href="{{route('personal.questions')}}">
                 <i class="material-icons">list</i>
                 {{'سوالات بلند'}}
-            </a></li>
+            </a>
+        </li>
+        <li class="{{$active == 'cover' ? 'active' : ''}}"><a href="{{route('personal.cover')}}">
+                <i class="material-icons">schedule</i>
+                {{'کاور در نشریه'}}
+            </a>
+        </li>
     </ul>
 </div>
