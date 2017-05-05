@@ -103,26 +103,19 @@ class PersonalPageController extends Controller
     public function cover()
     {
         $user = Auth::user();
-        if ($user['cover'])
-            $cover = cdn_url() . '/' . $user['cover'];
-        else
-            $cover = "/img/ppic.jpg";
+        $cover_words = $user['cover_words'] ?: '';
         return view('pages.personal.cover', [
-            'cover' => $cover
+            'cover_words' => $cover_words
         ]);
     }
 
     public function coverAction(Request $request)
     {
         $user = Auth::user();
-        if (!$request->hasFile('cover'))
-            return redirect()->back()->withErrors(['cover' => 'لطفا یک عکس انتخاب کنید.']);
-        Storage::disk('cdn')->makeDirectory('cover');
-        $path = Storage::disk('cdn')
-            ->putFileAs('cover', $request->file('cover'), $user['id'] . '.jpg');
-        $user->cover = $path;
+        $q = $request->get('cover_words');
+        $user->cover_words = $q;
         $user->save();
-        return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
+        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
     }
 
 

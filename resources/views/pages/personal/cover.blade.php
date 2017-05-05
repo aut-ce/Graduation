@@ -23,19 +23,15 @@
                 <div class="row">
                     @include('pages.personal.nav',['active'=>'cover'])
                     <div class="col-md-8 col-md-offset-2 form-dialog">
-                        <form class="file-from" action="" method="post" enctype="multipart/form-data">
+                        <form class="question-from" action="" method="post">
                             {{csrf_field()}}
-                            <input type="file" class="ppic-input" style="display: none;" name="cover">
-                            <h3 class="text-muted">{{'عکس کاور در نشریه'}}</h3>
+                            <h3 class="text-muted">{{'کلمات نقاشی کاور در نشریه'}}</h3>
                             <div class="row">
-                                <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-4 text-center">
-                                    <img src="{{$cover}}" alt="{{'کاور نشریه'}}"
-                                         class="img-rounded img-responsive img-raised">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-4 text-center">
-                                    <div class="btn btn-info add-ppic-button">{{'بارگذاری عکس'}}</div>
+                                <div class="form-group col-xs-12 label-floating pull-right {{isset($cover_words) && $cover_words =='' ? 'is-empty': ""}}">
+                                    <label class="control-label">{{'کلمات نقاشی کاور در نشریه'}}</label>
+                                    <textarea type="text" name="cover_words" class="form-control" rows="5"
+                                              style="text-align: right">{{isset($cover_words) ? $cover_words : ""}}</textarea>
+                                    <span class="material-input"></span>
                                 </div>
                             </div>
 
@@ -60,14 +56,14 @@
 @push('scripts')
 <script>
     $(function () {
-        $('.add-ppic-button').click(function() {
-            $('form .ppic-input').click();
-            $("form .ppic-input").change(function () {
-                readURL($('form .ppic-input')[0], '.img-rounded');
-            });
-        });
         $('button.submit-button').click(function (e) {
-            $('form').submit();
+            var number = $('.question-from textarea').filter(function () {
+                return this.value == "";
+            }).length;
+            if (number > 0) {
+                e.preventDefault();
+                toastr.error('لطفا کلمات نقاشی کاور را وارد کنید');
+            }
         })
     })
 </script>
