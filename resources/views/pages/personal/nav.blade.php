@@ -15,7 +15,7 @@
                 {{'سوالات بلند'}}
             </a>
         </li>
-        <li class="{{$active == 'cover' ? 'active' : ''}}"><a href="{{route('personal.cover')}}">
+        <li class="{{$active == 'cover' ? 'active' : ''}}"><a href="{{route('content.cover')}}">
                 <i class="material-icons">schedule</i>
                 {{'کاور در نشریه'}}
             </a>
