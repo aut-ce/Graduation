@@ -23,11 +23,13 @@
                 <div class="row">
                     @include('pages.content.nav',['active'=>'article'])
                     <div class="col-md-8 col-md-offset-2 form-dialog">
-                        <form class="article-from" action="{{route('content.articleAction')}}" method="post"
+                        <form class="article-from" action="{{route('content.articleAction',$article->_id)}}" method="post"
                               enctype="multipart/form-data">
                             {{csrf_field()}}
-                            <input type="hidden" name="id" value="{{$article['id']}}">
-                            @if($for || $article['texter'])
+                            @if($cover)
+                                <input type="hidden" name="cover" value="1">
+                                <h3 class="text-muted">{{'ارسال کلمه برای کاور'}}</h3>
+                            @elseif($for || $article['texter'])
                                 <h3 class="text-muted">{{'ارسال مطلب مطلب برای صفحه دوستان'}}</h3>
                             @else
                                 <h3 class="text-muted">{{'ارسال مطلب برای نشریه'}}</h3>
@@ -35,9 +37,15 @@
                             <div class="row">
                                 <div class="form-group col-xs-12 col-sm-6 label-floating pull-right {{ $article['title']=='' ? 'is-empty': ""}}">
                                     <label class="control-label">{{'عنوان'}}</label>
-                                    <input type="text" name="title" class="form-control" required
-                                           style="text-align: right"
-                                           value="{{$article['title']==-1 || !$article['title'] ?'': $article['title']}}">
+                                    @if($cover)
+                                        <input type="text" name="title" class="form-control" required readonly
+                                               style="text-align: right"
+                                               value="کلمه برای کاور">
+                                    @else
+                                        <input type="text" name="title" class="form-control" required
+                                               style="text-align: right"
+                                               value="{{$article['title']==-1 || !$article['title'] ?'': $article['title']}}">
+                                    @endif
                                     <span class="material-input"></span>
                                 </div>
                                 @if($for || $article['texter'])

@@ -50,8 +50,13 @@
                                         </td>
                                     @else
                                         <td class="td-actions text-right">
-                                            <a href="{{route('content.article',$item)}}" class="btn btn-success btn-simple btn-xs" rel="tooltip"
+                                            @if($item['cover'])
+                                            <a href="{{route('content.article',$item)}}?cover=1" class="btn btn-success btn-simple btn-xs" rel="tooltip"
                                                     title="{{'ویرایش'}}" type="button"><i class="fa fa-edit"></i></a>
+                                            @else
+                                                <a href="{{route('content.article',$item)}}" class="btn btn-success btn-simple btn-xs" rel="tooltip"
+                                                   title="{{'ویرایش'}}" type="button"><i class="fa fa-edit"></i></a>
+                                            @endif
                                             <a href="{{route('content.articleDelete',$item)}}" class="btn btn-danger btn-simple btn-xs" rel="tooltip" title={{'حذف'}}
                                                     type="button"><i class="fa fa-times"></i></a>
                                         </td>

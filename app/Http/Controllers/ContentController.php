@@ -28,11 +28,14 @@ class ContentController extends Controller
             Route::get('/file/delete/{file}', 'ContentController@fileDelete')->name('fileDelete');
 
             Route::get('/article/{article?}', 'ContentController@article')->name('article');
-            Route::post('/article', 'ContentController@articleAction')->name('articleAction');
+            Route::post('/article/{article}', 'ContentController@articleAction')->name('articleAction');
             Route::get('/article/delete/{article}', 'ContentController@articleDelete')->name('articleDelete');
 
             Route::get('/list', 'ContentController@list')->name('list');
             Route::get('/show', 'ContentController@show')->name('show');
+
+            Route::get('/cover', 'ContentController@cover')->name('cover');
+            Route::post('/cover', 'ContentController@coverAction')->name('coverAction');
 
             Route::get('/', function () {
                 return redirect()->route('content.list');
@@ -81,27 +84,31 @@ class ContentController extends Controller
         return redirect()->back()->with(['success' => 'با موفقیت حذف شد']);
     }
 
-    public function article(Article $article = null, Request $request)
+    public function article($article = null, Request $request)
     {
-        $for = $request->get('for');
-        $article->load('texter');
-        if (!$article) {
+        if ($article) {
+            $article = Article::where('_id', $article)->first();
+        } else {
             $user = Auth::user();
             $user->articles()->where('title', -1)->forceDelete();
             $article = Article::create(['title' => -1, 'content' => '', 'picture' => -1]);
             $user->articles()->save($article);
         }
+        $article->load('texter');
+        $for = $request->get('for') | $request->get('cover');
         return view('pages.content.article', [
             'article' => $article,
             'for' => $for,
+            'cover' => $request->get('cover'),
         ]);
     }
 
-    public function articleAction(Request $request)
+    public
+    function articleAction($article, Request $request)
     {
-        if (!$request->has('id'))
+        if (!$article)
             return redirect()->route('landing');
-        $article = Article::find($request->get('id'));
+        $article = Article::where('_id', $article)->first();
         if ($request->hasFile('picture')) {
             $sent_file = $request->file('picture');
             Storage::disk('cdn')->makeDirectory('articles/');
@@ -111,19 +118,23 @@ class ContentController extends Controller
         }
         if ($request->has('texter'))
             $article->texter_id = $request['texter'];
+        if ($request->has('cover'))
+            $article->cover = 1;
         $article->title = $request['title'];
         $article->content = $request['description'];
         $article->save();
         return redirect()->route('content.main')->with(['success' => 'با موفقیت ارسال شد']);
     }
 
-    public function articleDelete(Article $article)
+    public
+    function articleDelete(Article $article)
     {
         $article->delete();
         return redirect()->back()->with(['success' => 'با موفقیت حذف شد']);
     }
 
-    public function list()
+    public
+    function list()
     {
         $user = Auth::user();
         $contents = $user->articles()->where('title', '<>', -1)->get()

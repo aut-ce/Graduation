@@ -28,9 +28,6 @@ class PersonalPageController extends Controller
             Route::get('/ppic', 'PersonalPageController@ppic')->name('ppic');
             Route::post('/ppic', 'PersonalPageController@ppicAction')->name('ppicAction');
 
-            Route::get('/cover', 'PersonalPageController@cover')->name('cover');
-            Route::post('/cover', 'PersonalPageController@coverAction')->name('coverAction');
-
             Route::get('/', function () {
                 return redirect()->route('personal.mini');
             })->name('main');
@@ -99,25 +96,6 @@ class PersonalPageController extends Controller
         $user->save();
         return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
     }
-
-    public function cover()
-    {
-        $user = Auth::user();
-        $cover_words = $user['cover_words'] ?: '';
-        return view('pages.personal.cover', [
-            'cover_words' => $cover_words
-        ]);
-    }
-
-    public function coverAction(Request $request)
-    {
-        $user = Auth::user();
-        $q = $request->get('cover_words');
-        $user->cover_words = $q;
-        $user->save();
-        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
-    }
-
 
     protected function mini_questions()
     {

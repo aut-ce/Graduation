@@ -28,7 +28,7 @@
                     <a href="{{route('bests.main')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'ترین ها'}}
                     </a>
-                    <a href="{{route('personal.cover')}}" class="btn btn-raised btn-facebook sharrre">
+                    <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-facebook sharrre">
                         {{'کاور'}}
                     </a>
                 </div>
