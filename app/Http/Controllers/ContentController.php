@@ -34,9 +34,6 @@ class ContentController extends Controller
             Route::get('/list', 'ContentController@list')->name('list');
             Route::get('/show', 'ContentController@show')->name('show');
 
-            Route::get('/cover', 'ContentController@cover')->name('cover');
-            Route::post('/cover', 'ContentController@coverAction')->name('coverAction');
-
             Route::get('/', function () {
                 return redirect()->route('content.list');
             })->name('main');
