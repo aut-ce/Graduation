@@ -15,10 +15,5 @@
                 {{'سوالات بلند'}}
             </a>
         </li>
-        <li class="{{$active == 'cover' ? 'active' : ''}}"><a href="{{route('content.article')}}">
-                <i class="material-icons">schedule</i>
-                {{'کاور در نشریه'}}
-            </a>
-        </li>
     </ul>
 </div>
