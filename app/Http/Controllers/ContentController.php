@@ -42,10 +42,11 @@ class ContentController extends Controller
 
     public function file(File $file = null)
     {
-        if (!$file) {
+        if (!$file->_id) {
             $user = Auth::user();
             $user->files()->where('path', -1)->forceDelete();
             $file = File::create(['title' => '', 'description' => '', 'path' => -1]);
+            $file->save();
             $user->files()->save($file);
         }
         return view('pages.content.file', [
@@ -100,8 +101,7 @@ class ContentController extends Controller
         ]);
     }
 
-    public
-    function articleAction($article, Request $request)
+    public function articleAction($article, Request $request)
     {
         if (!$article)
             return redirect()->route('landing');
@@ -123,19 +123,17 @@ class ContentController extends Controller
         return redirect()->route('content.main')->with(['success' => 'با موفقیت ارسال شد']);
     }
 
-    public
-    function articleDelete(Article $article)
+    public function articleDelete(Article $article)
     {
         $article->delete();
         return redirect()->back()->with(['success' => 'با موفقیت حذف شد']);
     }
 
-    public
-    function list()
+    public function list()
     {
         $user = Auth::user();
         $contents = $user->articles()->where('title', '<>', -1)->get()
-            ->merge($user->files()->where('path', '<>', -1)->get())->sortByDesc('updated_at');;
+            ->merge($user->files()->where('path', '<>', -1)->get())->sortByDesc('updated_at');
         return view('pages.content.list', [
             'content' => $contents
         ]);

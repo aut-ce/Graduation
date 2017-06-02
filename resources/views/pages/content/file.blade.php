@@ -25,7 +25,7 @@
                     <div class="col-md-8 col-md-offset-2 form-dialog">
                         <form class="file-from" action="{{route('content.fileAction')}}" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
-                            <input type="hidden" name="id" value="{{$file['id']}}">
+                            <input type="hidden" name="id" value="{{$file['_id']}}">
                             <h3 class="text-muted">{{'ارسال فایل'}}</h3>
                             <div class="row">
                                 <div class="form-group col-xs-12 col-sm-6 label-floating pull-right {{ $file['title']=='' ? 'is-empty': ""}}">
