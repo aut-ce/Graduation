@@ -49,6 +49,8 @@ class ContentController extends Controller
             $file->save();
             $user->files()->save($file);
         }
+        if($file->user_id != $user->_id)
+            return redirect()->route('landing')->withErrors(['اجازه ویرایش ندارید']);
         return view('pages.content.file', [
             'file' => $file
         ]);
@@ -72,28 +74,34 @@ class ContentController extends Controller
         $file->title = $request['title'];
         $file->description = $request['description'];
         $file->name = $request['name'];
+        if($file->user_id != $user->_id)
+            return redirect()->route('landing')->withErrors(['اجازه ویرایش ندارید']);
         $file->save();
         return redirect()->route('content.main')->with(['success' => 'با موفقیت بارگذاری شد']);
     }
 
     public function fileDelete(File $file)
     {
+        if($file->user_id != Auth::user()->_id)
+            return redirect()->route('landing')->withErrors(['اجازه ویرایش ندارید']);
         $file->delete();
         return redirect()->back()->with(['success' => 'با موفقیت حذف شد']);
     }
 
     public function article($article = null, Request $request)
     {
+        $user = Auth::user();
         if ($article) {
             $article = Article::where('_id', $article)->first();
         } else {
-            $user = Auth::user();
             $user->articles()->where('title', -1)->forceDelete();
             $article = Article::create(['title' => -1, 'content' => '', 'picture' => -1]);
             $user->articles()->save($article);
         }
         $article->load('texter');
         $for = $request->get('for') | $request->get('cover');
+        if($article->user_id != $user->_id)
+            return redirect()->route('landing')->withErrors(['اجازه ویرایش ندارید']);
         return view('pages.content.article', [
             'article' => $article,
             'for' => $for,

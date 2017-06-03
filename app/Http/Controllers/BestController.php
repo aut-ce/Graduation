@@ -47,7 +47,7 @@ class BestController extends Controller
     }
 
 
-    protected function titles()
+    public static function titles()
     {
         // 86
         return [

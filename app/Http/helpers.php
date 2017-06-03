@@ -81,7 +81,13 @@ function selectKeys(\Illuminate\Support\Collection $collection, $keys)
         }
         return $res;
     });
+}
 
-
+function id_to_name($id)
+{
+    $user = \App\User::where('_id', $id)->first();
+    if (!$user)
+        return "";
+    return $user['first_name'] . " " . $user['last_name'];
 }
 

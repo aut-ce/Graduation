@@ -19,3 +19,4 @@
 \App\Http\Controllers\ContentController::routes();
 \App\Http\Controllers\SelectController::routes();
 \App\Http\Controllers\BestController::routes();
+\App\Http\Controllers\AdminController::routes();
