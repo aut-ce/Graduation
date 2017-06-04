@@ -79,39 +79,38 @@ class AdminController extends Controller
         $articles = Article::where('content', '<>', '')->get();
         $res = [];
         foreach ($articles as $art) {
-            if (isset($art['cover']) && $art['cover']){
+            if (isset($art['cover']) && $art['cover']) {
                 if (!isset($res[$art['user_id']]['cover']))
                     $res[$art['user_id']]['cover'] = 1;
                 else $res[$art['user_id']]['cover']++;
-            }
-            else{
+            } else {
                 if (!isset($res[$art['user_id']]['art']))
                     $res[$art['user_id']]['art'] = 1;
                 else $res[$art['user_id']]['art']++;
             }
         }
-        return view('admin.written',[
+        return view('admin.written', [
             'written' => $res
         ]);
 
     }
 
-    public function writtenFor(){
-        $articles = Article::where('content', '<>', '')->get();
+    public function writtenFor()
+    {
+        $articles = Article::where('content', '<>', '')->where('texter_id', 'exists', true)->get();
         $res = [];
         foreach ($articles as $art) {
-            if (isset($art['cover']) && $art['cover']){
+            if (isset($art['cover']) && $art['cover']) {
                 if (!isset($res[$art['texter_id']]['cover']))
                     $res[$art['texter_id']]['cover'] = 1;
                 else $res[$art['texter_id']]['cover']++;
-            }
-            else{
+            } else {
                 if (!isset($res[$art['texter_id']]['art']))
                     $res[$art['texter_id']]['art'] = 1;
                 else $res[$art['texter_id']]['art']++;
             }
         }
-        return view('admin.written_for',[
+        return view('admin.written_for', [
             'written' => $res
         ]);
     }
