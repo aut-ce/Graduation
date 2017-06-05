@@ -32,12 +32,12 @@
                                     </div>
                                     <div class="form-group col-xs-3 col-sm-3 pull-right">
                                         <h5>
-                                            @if(isset($value['cover']) &&  $value['cover'] !=0 )
-                                                <span class="label label-info">{{$value['cover']}}</span>
-                                            @else
-                                                <span class="label label-danger">0</span>
-                                            @endif
-                                            {{'کاور'}}
+                                            {{--@if(isset($value['cover']) &&  $value['cover'] !=0 )--}}
+                                                {{--<span class="label label-info">{{$value['cover']}}</span>--}}
+                                            {{--@else--}}
+                                                {{--<span class="label label-danger">0</span>--}}
+                                            {{--@endif--}}
+                                            {{'پنهان شده'}}
                                         </h5>
 
                                     </div>
