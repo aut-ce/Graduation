@@ -12,7 +12,7 @@ class TestController extends Controller
 
     public static function routes()
     {
-        Route::get('test', 'TestController@test');
+//        Route::get('writers_for/{id}', 'TestController@test');
     }
 
     public function test(){
@@ -20,6 +20,7 @@ class TestController extends Controller
         return selectKeys(User::get(),['first_name','last_name','username']);
         return view('pages.ask_participation');
     }
+
 
 
 

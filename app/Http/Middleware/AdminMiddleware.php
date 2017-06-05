@@ -17,14 +17,14 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         $admins = collect([
-            '58bb393f69ac230e5734e504',
-            '58bb393e69ac230e5734e4e0',
-            '58bb393b69ac230e5734e496',
-            '58bb393d69ac230e5734e4c6',
-            '58bb394169ac230e5734e538'
+            '9231069',
+            '9231036',
+            '9231011',
+            '9231051',
+            '9231902'
         ]);
         $user = Auth::user();
-        if($admins->contains($user->_id))
+        if($admins->contains($user->username))
             return $next($request);
         else
             return redirect()->route('landing');

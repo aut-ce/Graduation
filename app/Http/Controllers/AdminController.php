@@ -25,6 +25,10 @@ class AdminController extends Controller
             Route::get('/written-for', 'AdminController@writtenFor')->name('writtenFor');
             Route::get('/cover', 'AdminController@cover')->name('cover');
 
+
+            Route::get('/writers/for/{id}', 'AdminController@writersFor')->name('writersFor');
+            Route::get('/writes/for/{id}', 'AdminController@writesFor')->name('writersFor');
+
             Route::get('/', function () {
                 return redirect()->route('admin.home');
             })->name('main');
@@ -113,6 +117,34 @@ class AdminController extends Controller
         return view('admin.written_for', [
             'written' => $res
         ]);
+    }
+
+
+    public function writersFor($username){
+        $user = User::where('username',$username)->first();
+        if(!$user)
+            return "invalid user";
+        $articles = $user->texts()->with('user')->get();
+        $writers = [];
+        foreach ($articles as $art){
+            $writers[] = id_to_name($art['user_id']);
+        }
+        dd($writers);
+
+    }
+
+    public function writesFor($username){
+        $user = User::where('username',$username)->first();
+        if(!$user)
+            return "invalid user";
+        $articles = $user->articles()->get();
+        $writers = [];
+        foreach ($articles as $art){
+            if(isset($art['texter_id']))
+                $writers[] = id_to_name($art['texter_id']);
+        }
+        dd($writers);
+
     }
 
 }
