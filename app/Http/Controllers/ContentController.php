@@ -177,7 +177,7 @@ class ContentController extends Controller
                 $output[user_to_name($t['user'])]['text']++;
         }
         return [
-            'articles' => $output,
+            'articles' => [],
             'covers' => count($covers),
             'texts' => count($texts),
         ];
