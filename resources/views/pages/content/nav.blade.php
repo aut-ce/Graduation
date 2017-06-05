@@ -12,5 +12,10 @@
                 <i class="material-icons">list</i>
                 {{'لیست محتوای ارسالی'}}
             </a></li>
+
+        <li class="{{$active == 'writers' ? 'active' : ''}}"><a href="{{route('content.writers')}}">
+                <i class="material-icons">format_list_bulleted</i>
+                {{'کی چقد واسه شما نوشته'}}
+            </a></li>
     </ul>
 </div>

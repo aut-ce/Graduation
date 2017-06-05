@@ -32,6 +32,7 @@ class ContentController extends Controller
             Route::get('/article/delete/{article}', 'ContentController@articleDelete')->name('articleDelete');
 
             Route::get('/list', 'ContentController@list')->name('list');
+            Route::get('/writers', 'ContentController@writers')->name('writers');
             Route::get('/show', 'ContentController@show')->name('show');
 
             Route::get('/', function () {
@@ -145,5 +146,40 @@ class ContentController extends Controller
         return view('pages.content.list', [
             'content' => $contents
         ]);
+    }
+
+    public function writers(){
+        $articles = $this->writers_article();
+        return view('pages.content.writers',[
+            'articles' => $articles['articles'],
+            'text' => $articles['texts'],
+            'cover' => $articles['covers']
+        ]);
+    }
+
+    protected function writers_article(){
+        $user = Auth::user();
+        $covers = $user->texts()->where('cover',1)->with('user')->get();
+        $texts = $user->texts()->where(function ($query){
+            $query->where('cover','exists',false)->orWhere('cover','=',0);
+        })->with('user')->get();
+        $output = [];
+        foreach ($covers as $c){
+            if(!isset($output[user_to_name($c['user'])]['cover']))
+                $output[user_to_name($c['user'])]['cover'] = 1;
+            else
+                $output[user_to_name($c['user'])]['cover'] ++;
+        }
+        foreach ($texts as $t){
+            if(!isset($output[user_to_name($t['user'])]['text']))
+                $output[user_to_name($t['user'])]['text'] = 1;
+            else
+                $output[user_to_name($t['user'])]['text']++;
+        }
+        return [
+            'articles' => $output,
+            'covers' => count($covers),
+            'texts' => count($texts),
+        ];
     }
 }

@@ -91,3 +91,11 @@ function id_to_name($id)
     return $user['first_name'] . " " . $user['last_name'];
 }
 
+function user_to_name($user)
+{
+    if (!$user)
+        return "";
+    return $user['first_name'] . " " . $user['last_name'];
+}
+
+

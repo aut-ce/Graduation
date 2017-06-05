@@ -48,6 +48,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="row sharing-area text-center">
+                    <a href="{{route('content.writers')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
+                        {{'کی چقد واسه شما نوشته'}}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
