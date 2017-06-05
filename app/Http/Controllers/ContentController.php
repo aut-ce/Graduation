@@ -164,12 +164,14 @@ class ContentController extends Controller
             $query->where('cover','exists',false)->orWhere('cover','=',0);
         })->with('user')->get();
         $output = [];
+        /*
         foreach ($covers as $c){
             if(!isset($output[user_to_name($c['user'])]['cover']))
                 $output[user_to_name($c['user'])]['cover'] = 1;
             else
                 $output[user_to_name($c['user'])]['cover'] ++;
         }
+        */
         foreach ($texts as $t){
             if(!isset($output[user_to_name($t['user'])]['text']))
                 $output[user_to_name($t['user'])]['text'] = 1;

@@ -29,26 +29,29 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th>{{'نام'}}</th>
-                                <th>{{'کاور'}}</th>
                                 <th>{{'متن'}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 0 ?>
+                            <tr>
+                                <td class="text-center">{{1}}</td>
+                                <td><strong>{{'کاور'}}</strong></td>
+                                <td>
+                                    @if($cover > 4 )
+                                        <span class="label label-success">{{$cover}}</span>
+                                    @elseif($cover == 4)
+                                        <span class="label label-info">{{$cover}}</span>
+                                    @else
+                                        <span class="label label-danger">{{$cover}}</span>
+                                    @endif
+                                </td>
+                            </tr>
+                            <?php $i = 1 ?>
                             @foreach($articles as $key => $item)
                                 <?php $i++ ?>
                                 <tr>
                                     <td class="text-center">{{$i}}</td>
                                     <td>{{$key}}</td>
-                                    <td>
-                                        @if(isset($item['cover']) &&  $item['cover'] >1 )
-                                            <span class="label label-success">{{$item['cover']}}</span>
-                                        @elseif(isset($item['cover']) &&  $item['cover'] = 1)
-                                            <span class="label label-info">{{$item['cover']}}</span>
-                                        @else
-                                            <span class="label label-danger">0</span>
-                                        @endif
-                                    </td>
                                     <td>
                                         @if(isset($item['text']) &&  $item['text'] >1 )
                                             <span class="label label-success">{{$item['text']}}</span>
