@@ -52,6 +52,10 @@
                     <a href="{{route('content.writers')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
                         {{'کی چقد واسه شما نوشته'}}
                     </a>
+
+                    <a href="{{route('content.articles')}}" id="twitter" class="btn btn-raised btn-google-plus sharrre">
+                        {{'متن های نوشته شده برای من'}}
+                    </a>
                 </div>
             </div>
         </div>

@@ -33,7 +33,8 @@ class ContentController extends Controller
 
             Route::get('/list', 'ContentController@list')->name('list');
             Route::get('/writers', 'ContentController@writers')->name('writers');
-            Route::get('/show', 'ContentController@show')->name('show');
+
+            Route::get('/articles', 'ContentController@articles')->name('articles');
 
             Route::get('/', function () {
                 return redirect()->route('content.list');
@@ -183,5 +184,15 @@ class ContentController extends Controller
             'covers' => count($covers),
             'texts' => count($texts),
         ];
+    }
+
+
+    public function articles(){
+        $user = Auth::user();
+        $articles = $user->texts()->with('user')->where('cover', 'exists', false)->get();
+        return view('pages.content.my_articles', [
+            'articles' => $articles,
+            'user' => $user
+        ]);
     }
 }

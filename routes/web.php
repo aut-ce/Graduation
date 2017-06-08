@@ -20,3 +20,4 @@
 \App\Http\Controllers\SelectController::routes();
 \App\Http\Controllers\BestController::routes();
 \App\Http\Controllers\AdminController::routes();
+\App\Http\Controllers\JournalController::routes();
