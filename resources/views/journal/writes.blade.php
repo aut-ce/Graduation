@@ -56,7 +56,7 @@
                                                 <li>
                                                     <a href="#profile" data-toggle="tab">
                                                         <i class="material-icons">face</i>
-                                                        {{$article['user']['first_name']}} {{$article['user']['last_name']}}
+                                                        {{$article['texter']['first_name']}} {{$article['texter']['last_name']}}
                                                     </a>
                                                 </li>
 

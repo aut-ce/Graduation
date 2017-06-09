@@ -211,6 +211,7 @@ class ContentController extends Controller
         if (!$article || $user['id'] != $article['texter_id'])
             return 0;
         $article['show'] = $data['show'];
+        $article->timestamps = false;
         $article->save();
         return 1;
     }
