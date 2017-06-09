@@ -11,7 +11,7 @@ class JournalController extends Controller
     function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
+        $this->middleware('journal');
     }
 
     public static function routes()
