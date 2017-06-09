@@ -31,6 +31,9 @@
                     <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-facebook sharrre">
                         {{'کاور'}}
                     </a>
+                    <a href="{{route('bests.inst')}}" class="btn btn-raised btn-google-plus sharrre">
+                        {{'ترین اساتید'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">

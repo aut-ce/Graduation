@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Instructor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ class BestController extends Controller
         Route::group(['prefix' => 'bests', 'as' => 'bests.'], function () {
             Route::get('/', 'BestController@bests')->name('main');
             Route::post('/', 'BestController@bestsAction')->name('mainAction');
+
+            Route::get('/inst', 'BestController@inst')->name('inst');
+            Route::post('/inst', 'BestController@instAction')->name('instAction');
 
         });
     }
@@ -42,6 +46,27 @@ class BestController extends Controller
         $user = Auth::user();
         $q = $request->get('q');
         $user->bests_q = json_encode($q);
+        $user->save();
+        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
+    }
+
+    public function inst()
+    {
+        $user = Auth::user();
+        $answers = $user['bests_q_inst'] ? json_decode($user['bests_q_inst'], true) : [];
+        $inst = Instructor::whereIn('_id', $answers)->get()->keyBy('id');
+        return view('pages.bests.bests-inst', [
+            'titles' => $this->instTitles(),
+            'answers' => $answers,
+            'inst' => $inst
+        ]);
+    }
+
+    public function instAction(Request $request)
+    {
+        $user = Auth::user();
+        $q = $request->get('q');
+        $user->bests_q_inst = json_encode($q);
         $user->save();
         return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
     }
@@ -136,6 +161,47 @@ class BestController extends Controller
             84 => "عجیب ترین",
             85 => "پررو ترین",
             86 => "دست و دلباز ترین",
+        ];
+    }
+
+    public function instTitles(){
+        //34
+        return [
+            "بهترین ",
+            "یخ ترین ",
+            "سخت گیر ترین",
+            " بی آزار ترین",
+            " سم ترین",
+            "با حال ترین ",
+            "با سواد ترین",
+            " خسته ترین ",
+            "دوست داشتنی ترین ",
+            " زود رنج ترین",
+            "تمدید کن ترین",
+            "تکلیف بده ترین",
+            "ترسناک ترین",
+            "با شخصیت ترین",
+            "سایکوترین",
+            "مریض ترین",
+            "تبعیض جنسیتی قائل شو ترین",
+            "نمره اضافه بده ترین",
+            "کلا به بچه ها توجه نکن ترین",
+            "نامفهوم درس بده ترین",
+            "پرحرف ترین",
+            "دیر ول کن ترین",
+            "کوییز بگیر ترین",
+            "رو هوا نمره بده ترین",
+            "سخت تصحیح کن ترین",
+            "صدبار توضیح بده ترین",
+            "بد ارائه بده ترین",
+            "خاطره سر کلاس تعریف کن ترین",
+            "پروژه زن ترین",
+            "تی ای اذیت کن ترین",
+            "منطقی ترین",
+            "خوشتیپ ترین",
+            "لوس ترین",
+            "غیر قابل پیش بینی ترین",
+            
         ];
     }
 }
