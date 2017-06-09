@@ -35,7 +35,8 @@
                                 <div class="header header-success">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs" style="display: flex;justify-content: flex-end">
+                                            <ul class="nav nav-tabs" data-tabs="tabs"
+                                                style="display: flex;justify-content: flex-end">
                                                 <li class="active">
                                                     <a href="#profile" data-toggle="tab">
                                                         <i class="material-icons">title</i>
@@ -49,6 +50,7 @@
                                                     </a>
                                                 </li>
 
+
                                             </ul>
                                         </div>
                                     </div>
@@ -57,15 +59,24 @@
                                     <div class="tab-content text-center">
                                         <div class="tab-pane active" id="settings">
                                             @foreach(explode("\r\n",$article['content']) as $p)
-                                            <p style="direction: rtl;">{{$p}}</p>
+                                                <p style="direction: rtl;">{{$p}}</p>
                                             @endforeach
                                         </div>
                                     </div>
                                     @if($article['picture']!= -1)
                                         <div style="width: 100%;display: flex;justify-content: center">
-                                            <img src="{{cdn($article['picture'])}}" style="max-width: 20rem">
+                                            <div style="max-width: 20rem">
+                                                <img src="{{cdn($article['picture'])}}" style="width: 100%">
+                                            </div>
                                         </div>
                                     @endif
+                                    <div class="togglebutton">
+                                        <label>
+                                            <input class="show-article" type="checkbox"
+                                                   {{(isset($article['show']) && $article['show'] ==true) ? 'checked' :''}} data-id="{{$article['_id']}}">
+                                            {{'نمایش در مجله'}}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -76,5 +87,28 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('input.show-article').change(function () {
+        var show = this.checked;
+        var id = $(this).attr('data-id')
+        $.post('{{route('content.showArticle')}}',
+            {
+                'id' : id,
+                'show' : show
+            }
+        ).done(function (data) {
+            if(data == 0)
+                toastr.error('خطا');
+        })
+    })
+</script>
+@endpush
 
 
