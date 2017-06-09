@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group col-xs-12 col-sm-6 pull-right art-image">
                                     @if($file['path'])
-                                        <img src="{{cdn($file['path'])}}" alt="">
+                                        <img style="width: 100%" src="{{cdn($file['path'])}}" alt="">
                                     @endif
                                 </div>
 
