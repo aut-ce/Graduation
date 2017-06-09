@@ -46,8 +46,8 @@ class ContentController extends Controller
 
     public function file(File $file = null)
     {
+        $user = Auth::user();
         if (!$file->_id) {
-            $user = Auth::user();
             $user->files()->where('path', -1)->forceDelete();
             $file = File::create(['title' => '', 'description' => '', 'path' => -1]);
             $file->save();
