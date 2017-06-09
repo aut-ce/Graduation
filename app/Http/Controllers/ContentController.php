@@ -144,8 +144,8 @@ class ContentController extends Controller
     public function list()
     {
         $user = Auth::user();
-        $contents = $user->articles()->where('title', '<>', -1)->get()
-            ->merge($user->files()->where('path', '<>', -1)->get())->sortByDesc('updated_at');
+        $contents = $user->articles()->where('title', '<>', -1)->with('texter')->get()
+            ->merge($user->files()->with('texter')->where('path', '<>', -1)->get())->sortByDesc('updated_at');
         return view('pages.content.list', [
             'content' => $contents
         ]);

@@ -30,6 +30,7 @@
                                 <th class="text-center">#</th>
                                 <th>{{'عنوان'}}</th>
                                 <th>{{'نوع'}}</th>
+                                <th>{{'برای'}}</th>
                                 <th>{{'تاریخ'}}</th>
                                 <th>{{'عملیات'}}</th>
                             </tr>
@@ -40,6 +41,7 @@
                                     <td class="text-center">{{$key+1}}</td>
                                     <td>{{$item['title']}}</td>
                                     <td>{{isset($item['path'])?'فایل':'مقاله'}}</td>
+                                    <td>{{isset($item['texter'])?user_to_name($item['texter']):''}}</td>
                                     <td>{{dateFormat($item['updated_at'])}}</td>
                                     @if(isset($item['path']))
                                         <td class="td-actions text-right">
