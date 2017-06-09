@@ -57,6 +57,11 @@
                                            style="text-align: right" value="{{$file['name'] ?: ""}}">
                                     <span class="material-input"></span>
                                 </div>
+                                <div class="form-group col-xs-12 col-sm-6 pull-right art-image">
+                                    @if($article['picture'])
+                                        <img src="{{cdn($file['path'])}}" alt="">
+                                    @endif
+                                </div>
 
                             </div>
 
