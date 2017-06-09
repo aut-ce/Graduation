@@ -38,7 +38,7 @@
                                                 @else
                                                     <span class="label label-info">{{$q[0]['num']}}</span>
                                                 @endif
-                                                {{inst_id_to_name($q[0]['id'])}}
+                                                {{id_to_name($q[0]['id'])}}
                                             @endif
                                         </h5>
 
