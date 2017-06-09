@@ -73,7 +73,7 @@
                                     <div class="togglebutton">
                                         <label>
                                             <input class="show-article" type="checkbox"
-                                                   {{(isset($article['show']) && $article['show'] ==true) ? 'checked' :''}} data-id="{{$article['_id']}}">
+                                                   {{(isset($article['show']) && $article['show'] == 'true') ? 'checked' :''}} data-id="{{$article['_id']}}">
                                             {{'نمایش در مجله'}}
                                         </label>
                                     </div>
