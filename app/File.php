@@ -18,4 +18,9 @@ class File extends Eloquent
     {
         return $this->belongsTo(User::class);
     }
+
+    public function texter()
+    {
+        return $this->belongsTo(User::class, 'texter_id');
+    }
 }
