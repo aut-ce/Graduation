@@ -21,7 +21,25 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 form-dialog">
+                    <div class="col-md-3 col-md-offset-1 col-xs-12 form-dialog">
+                        <table class="table">
+                            <thead>
+                            <tr style="text-align: right">
+                                <th style="text-align: right">{{'نام و نام خانوادگی'}}</th>
+                                <th style="text-align: right">{{'شماره‌دانشجویی'}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($allUsers as $i)
+                                <tr>
+                                    <td>{{user_to_name($i)}}</td>
+                                    <td>{{$i['username']}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 col-xs-12 form-dialog">
                         <form class="bests-from" action="" method="post">
                             {{csrf_field()}}
                             <h3 class="text-muted">{{'ترین های دانشکده'}}</h3>

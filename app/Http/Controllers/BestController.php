@@ -37,7 +37,8 @@ class BestController extends Controller
         return view('pages.bests.bests', [
             'titles' => $this->titles(),
             'answers' => $answers,
-            'users' => $users
+            'users' => $users,
+            'allUsers' => User::where('username','like','92%')->orderBy('username')->get()
         ]);
     }
 
@@ -58,7 +59,8 @@ class BestController extends Controller
         return view('pages.bests.bests-inst', [
             'titles' => $this->instTitles(),
             'answers' => $answers,
-            'inst' => $inst
+            'inst' => $inst,
+            'allInst' => Instructor::all()
         ]);
     }
 

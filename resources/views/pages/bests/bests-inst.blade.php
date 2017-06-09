@@ -21,7 +21,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 form-dialog">
+                    <div class="col-md-3 col-md-offset-1 col-xs-12 form-dialog">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th style="text-align: right">{{'نام'}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($allInst as $i)
+                                <tr>
+                                    <td>{{$i['name']}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 col-xs-12 form-dialog">
                         <form class="bests-from" action="" method="post">
                             {{csrf_field()}}
                             <h3 class="text-muted">{{'ترین های اساتید دانشکده'}}</h3>
