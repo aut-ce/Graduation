@@ -91,6 +91,14 @@ function id_to_name($id)
     return $user['first_name'] . " " . $user['last_name'];
 }
 
+function inst_id_to_name($id)
+{
+    $user = \App\Instructor::where('_id', $id)->first();
+    if (!$user)
+        return "";
+    return $user['name'];
+}
+
 function user_to_name($user)
 {
     if (!$user)

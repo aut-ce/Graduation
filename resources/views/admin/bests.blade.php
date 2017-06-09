@@ -32,12 +32,14 @@
                                     </div>
                                     <div class="form-group col-xs-6 col-sm-4 pull-right">
                                         <h5>
-                                            @if($q[0]['num']>=10)
-                                                <span class="label label-success">{{$q[0]['num']}}</span>
-                                            @else
-                                                <span class="label label-info">{{$q[0]['num']}}</span>
+                                            @if(count($q))
+                                                @if($q[0]['num']>=10)
+                                                    <span class="label label-success">{{$q[0]['num']}}</span>
+                                                @else
+                                                    <span class="label label-info">{{$q[0]['num']}}</span>
+                                                @endif
+                                                {{inst_id_to_name($q[0]['id'])}}
                                             @endif
-                                            {{id_to_name($q[0]['id'])}}
                                         </h5>
 
                                     </div>

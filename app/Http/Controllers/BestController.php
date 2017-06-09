@@ -166,7 +166,7 @@ class BestController extends Controller
         ];
     }
 
-    public function instTitles(){
+    public static function instTitles(){
         //34
         return [
             "بهترین ",

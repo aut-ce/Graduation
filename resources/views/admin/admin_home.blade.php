@@ -25,9 +25,9 @@
                     <a href="{{route('admin.bests')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
                         {{'ترین ها'}}
                     </a>
-                    {{--<a href="{{route('admin.cover')}}" class="btn btn-raised btn-facebook sharrre">--}}
-                        {{--{{'کاور'}}--}}
-                    {{--</a>--}}
+                    <a href="{{route('admin.instBests')}}" class="btn btn-raised btn-facebook sharrre">
+                        {{'ترین اساتید'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">

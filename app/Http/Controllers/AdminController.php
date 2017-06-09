@@ -21,6 +21,7 @@ class AdminController extends Controller
         Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/list', 'AdminController@home')->name('home');
             Route::get('/bests', 'AdminController@bests')->name('bests');
+            Route::get('/inst-bests', 'AdminController@instBests')->name('instBests');
             Route::get('/written', 'AdminController@written')->name('written');
             Route::get('/written-for', 'AdminController@writtenFor')->name('writtenFor');
             Route::get('/cover', 'AdminController@cover')->name('cover');
@@ -43,7 +44,7 @@ class AdminController extends Controller
 
     public function bests()
     {
-        $users = User::where('username', 'like', '9231%')->get();
+        $users = User::where('username', 'like', '92%')->get();
         $res1 = BestController::titles();
         foreach ($users as $user) {
             if (!isset($user['bests_q']) || !$user['bests_q'] || $user['bests_q'] == "null")
@@ -73,6 +74,45 @@ class AdminController extends Controller
         }
         return view('admin.bests', [
             'titles' => BestController::titles(),
+            'answers' => $res2,
+        ]);
+
+    }
+
+    public function instBests()
+    {
+        $users = User::where('username', 'like', '92%')->get();
+        $res1 = BestController::instTitles();
+        foreach ($users as $user) {
+            if (!isset($user['bests_q_inst']) || !$user['bests_q_inst'] || $user['bests_q_inst'] == "null")
+                continue;
+            $bests = json_decode($user['bests_q_inst'], true);
+            foreach ($bests as $key => $b) {
+                if (!is_array($res1[$key]))
+                    $res1[$key] = [];
+                $res1[$key][] = $b;
+            }
+        }
+        foreach ($res1 as $key => $value) {
+            $count_array = [];
+            if(!is_array($value))
+                $value = [];
+            foreach ($value as $id) {
+                if (isset($count_array[$id]))
+                    $count_array[$id]++;
+                else $count_array[$id] = 1;
+            }
+            $count_array_obj = [];
+            foreach ($count_array as $key2 => $value) {
+                $item['id'] = $key2;
+                $item['num'] = $value;
+                $count_array_obj[] = $item;
+            }
+            $count_array = collect($count_array_obj)->sortByDesc('num');
+            $res2[$key] = $count_array->values()->all();
+        }
+        return view('admin.bests', [
+            'titles' => BestController::instTitles(),
             'answers' => $res2,
         ]);
 
