@@ -203,7 +203,6 @@ class ContentController extends Controller
 
     public function showArticle(Request $request)
     {
-        return 0;
         $data = $request->only(['id', 'show']);
         $user = Auth::user();
         $article = null;
