@@ -3,7 +3,7 @@
 @push('styles')
 <style>
     body {
-        background: url('/img/8.jpg') no-repeat fixed;
+        background: url('/img/10.jpg') no-repeat fixed;
         background-size: cover;
     }
 </style>

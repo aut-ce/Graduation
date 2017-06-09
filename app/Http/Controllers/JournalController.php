@@ -21,8 +21,8 @@ class JournalController extends Controller
             Route::get('/list', 'JournalController@home')->name('home');
 
             Route::get('/cover', 'JournalController@cover')->name('cover');
-//            Route::get('/writes', 'JournalController@writes')->name('writes');
-//            Route::get('/written-for', 'JournalController@writtenFor')->name('writtenFor');
+            //Route::get('/writes', 'JournalController@writes')->name('writes');
+            //Route::get('/written-for', 'JournalController@writtenFor')->name('writtenFor');
 
             Route::get('/', function () {
                 return redirect()->route('journal.home');
@@ -53,6 +53,7 @@ class JournalController extends Controller
     public function writes(Request $request)
     {
         $articles = [];
+        $user = null;
         $username = $request->get('username');
         if ($username){
             $user = User::where('username', $username)->first();
@@ -71,6 +72,7 @@ class JournalController extends Controller
     public function writtenFor(Request $request)
     {
         $articles = [];
+        $user = null;
         $username = $request->get('username');
         if ($username){
             $user = User::where('username', $username)->first();
