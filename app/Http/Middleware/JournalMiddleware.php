@@ -18,7 +18,10 @@ class JournalMiddleware
     {
         $admins = collect([
             '9231069',
-            '9231030'
+            '9231030',
+            '9231073',
+            '9231011',
+
         ]);
         $user = Auth::user();
         if($admins->contains($user->username))
