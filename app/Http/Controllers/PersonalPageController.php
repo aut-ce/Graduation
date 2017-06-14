@@ -28,6 +28,10 @@ class PersonalPageController extends Controller
             Route::get('/ppic', 'PersonalPageController@ppic')->name('ppic');
             Route::post('/ppic', 'PersonalPageController@ppicAction')->name('ppicAction');
 
+            Route::get('/cover', 'PersonalPageController@cover')->name('cover');
+            Route::post('/cover', 'PersonalPageController@coverAction')->name('coverAction');
+            Route::get('/cover/reset', 'PersonalPageController@coverReset')->name('coverReset');
+
             Route::get('/', function () {
                 return redirect()->route('personal.mini');
             })->name('main');
@@ -95,6 +99,37 @@ class PersonalPageController extends Controller
         $user->ppic = $path;
         $user->save();
         return redirect()->route('landing')->with(['success' => 'با موفقیت بارگذاری شد']);
+    }
+
+    public function cover()
+    {
+        $user = Auth::user();
+        $self_cover = $user['cover'] ?: '';
+        $covers_text = '';
+        $covers = $user->texts()->where('cover', 1)->get();
+        foreach ($covers as $c) {
+            $covers_text .= $c['content'] . "\n";
+        }
+        return view('pages.personal.cover', [
+            'self_cover' => $self_cover,
+            'covers_text' => $covers_text,
+            'lines' => $self_cover ? substr_count( $self_cover, "\n" ) : substr_count( $covers_text, "\n" )
+        ]);
+    }
+
+    public function coverAction(Request $request)
+    {
+        $user = Auth::user();
+        $q = $request->get('cover_words');
+        $user->cover = $q;
+        $user->save();
+        return redirect()->route('landing')->with('success', 'با موفقیت ثبت شد');
+    }
+
+    public function coverReset()
+    {
+        Auth::user()->unset('cover');
+        return redirect()->back()->with('success', 'با موفقیت ریست شد');
     }
 
     protected function mini_questions()

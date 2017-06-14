@@ -29,18 +29,21 @@
                             <div class="row">
                                 <div class="form-group col-xs-12 label-floating pull-right {{isset($cover_words) && $cover_words =='' ? 'is-empty': ""}}">
                                     <label class="control-label">{{'کلمات نقاشی کاور در نشریه'}}</label>
-                                    <textarea type="text" name="cover_words" class="form-control" rows="5"
-                                              style="text-align: right">{{isset($cover_words) ? $cover_words : ""}}</textarea>
+                                    <textarea type="text" name="cover_words" class="form-control" rows="{{$lines+2}}"
+                                              style="text-align: right">{{$self_cover ?: $covers_text}}</textarea>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-6 col-md-9"></div>
-                                <div class="col-xs-6 col-md-3">
-                                    <button class="btn btn-success submit-button">{{'ثبت'}}
+                                <div class="col-xs-0 col-md-6"></div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;">
+                                    <button class="btn btn-success submit-button" style="width: 200px;">{{'ثبت'}}
                                         <div class="ripple-container"></div>
                                     </button>
+                                    <a href="{{route('personal.coverReset')}}" class="btn btn-danger reset-button">{{'ریست به کلمات نوشته شده توسط بچه ها'}}
+                                        <div class="ripple-container"></div>
+                                    </a>
                                 </div>
                             </div>
                         </form>
@@ -65,6 +68,14 @@
                 toastr.error('لطفا کلمات نقاشی کاور را وارد کنید');
             }
         })
+        $("textarea").keyup(function(e) {
+            while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+                $(this).height($(this).height()+1);
+            };
+            while($(this).outerHeight() >= this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+                $(this).height($(this).height()-1);
+            };
+        });
     })
 </script>
 @endpush

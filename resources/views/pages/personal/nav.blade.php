@@ -15,5 +15,10 @@
                 {{'سوالات بلند'}}
             </a>
         </li>
+        <li class="{{$active == 'cover' ? 'active' : ''}}"><a href="{{route('personal.cover')}}">
+                <i class="material-icons">schedule</i>
+                {{'کاور من'}}
+            </a>
+        </li>
     </ul>
 </div>

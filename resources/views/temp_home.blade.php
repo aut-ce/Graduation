@@ -29,7 +29,7 @@
                         {{'ترین ها'}}
                     </a>
                     <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-facebook sharrre">
-                        {{'کاور'}}
+                        {{'نوشتن کاور برای دوستان'}}
                     </a>
                     <a href="{{route('bests.inst')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'ترین اساتید'}}
@@ -58,6 +58,9 @@
 
                     <a href="{{route('content.articles')}}" id="twitter" class="btn btn-raised btn-google-plus sharrre">
                         {{'متن های نوشته شده برای من'}}
+                    </a>
+                    <a href="{{route('personal.cover')}}" class="btn btn-raised btn-facebook sharrre">
+                        {{'انتخاب کلمه کاور از بین نوشته شده ها برای صفحه'}}
                     </a>
                 </div>
             </div>
