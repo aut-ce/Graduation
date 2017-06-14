@@ -38,7 +38,7 @@
                             <div class="row">
                                 <div class="col-xs-0 col-md-6"></div>
                                 <div class="col-xs-12 col-md-6" style="display: flex;">
-                                    <button class="btn btn-success submit-button" style="width: 200px;">{{'ثبت'}}
+                                    <button class="btn btn-success submit-button" style="width: 200px;">{{'بنده تایید می کنم'}}
                                         <div class="ripple-container"></div>
                                     </button>
                                     <a href="{{route('personal.coverReset')}}" class="btn btn-danger reset-button">{{'ریست به کلمات نوشته شده توسط بچه ها'}}
