@@ -21,8 +21,8 @@ class JournalController extends Controller
             Route::get('/list', 'JournalController@home')->name('home');
 
             Route::get('/cover', 'JournalController@cover')->name('cover');
-            Route::get('/writes', 'JournalController@writes')->name('writes');
-            Route::get('/written-for', 'JournalController@writtenFor')->name('writtenFor');
+            //Route::get('/writes', 'JournalController@writes')->name('writes');
+            //Route::get('/written-for', 'JournalController@writtenFor')->name('writtenFor');
 
             Route::get('/', function () {
                 return redirect()->route('journal.home');
@@ -39,13 +39,17 @@ class JournalController extends Controller
     {
         $covers = [];
         $user = $request->get('username');
+
         if ($user)
             $user = User::where('username', $user)->first();
+        /*
         if ($user)
             $covers = $user->texts()->with('user')->where('cover', 'exists', true)->get();
+        */
         return view('journal.cover', [
-            'covers' => $covers,
-            'user' => $user
+            'covers' => isset($user['cover']) ? $user['cover'] : 'تایید نشده',
+            'user' => $user,
+            'confirm' => isset($user['cover'])
         ]);
 
     }
@@ -55,7 +59,7 @@ class JournalController extends Controller
         $articles = [];
         $user = null;
         $username = $request->get('username');
-        if ($username){
+        if ($username) {
             $user = User::where('username', $username)->first();
             if (!$user)
                 $user = User::where('email', $username)->first();
@@ -74,7 +78,7 @@ class JournalController extends Controller
         $articles = [];
         $user = null;
         $username = $request->get('username');
-        if ($username){
+        if ($username) {
             $user = User::where('username', $username)->first();
             if (!$user)
                 $user = User::where('email', $username)->first();

@@ -39,7 +39,37 @@
                     </div>
                 </div>
 
-                @foreach($covers as $cover)
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="card card-nav-tabs ">
+                            <div class="header header-success">
+                                <div class="nav-tabs-navigation">
+                                    <div class="nav-tabs-wrapper">
+                                        <ul class="nav nav-tabs" data-tabs="tabs" style="display: flex;justify-content: flex-end">
+                                            <li class="active">
+                                                <a href="#profile" data-toggle="tab">
+                                                    <i class="material-icons">face</i>
+                                                    {{$confirm ? 'تایید شده' : 'تایید نشده'}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="tab-content text-center">
+                                    <div class="tab-pane active" id="settings">
+                                        @foreach(explode("\r\n",$covers) as $p)
+                                            <p style="direction: rtl;">{{$p}}</p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--for each cover--}}
+                @foreach([] as $cover)
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="card card-nav-tabs ">
