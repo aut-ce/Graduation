@@ -16,15 +16,9 @@ class JournalMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $admins = collect([
-            '9231069',
-            '9231030',
-            '9231073',
-            '9231011',
-
-        ]);
+        $admins = journal_admins();
         $user = Auth::user();
-        if($admins->contains($user->username))
+        if($user['username'] && $admins->contains($user->username))
             return $next($request);
         else
             return redirect()->route('landing');

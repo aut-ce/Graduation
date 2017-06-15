@@ -17,5 +17,10 @@
                 <i class="material-icons">format_list_bulleted</i>
                 {{'کی چقد واسه شما نوشته'}}
             </a></li>
+
+        <li class=""><a href="{{route('content.articles')}}">
+                <i class="material-icons">dashboard</i>
+                {{'متن های نوشته شده برای شما'}}
+            </a></li>
     </ul>
 </div>

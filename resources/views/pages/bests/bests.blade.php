@@ -10,6 +10,7 @@
 @endpush
 
 @section('content')
+    <a href="{{route('landing')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
     <div class="wrapper home personal">
         <div class="header header-filter">
             <div class="container">
@@ -51,7 +52,7 @@
                                     </div>
                                     <div class="form-group col-xs-6 col-sm-4 pull-right">
                                         <select class="js-example-basic-single user-bests select2" name="q[{{$key}}]">
-                                            @if(isset($answers[$key]))
+                                            @if(isset($answers[$key]) && isset($users[$answers[$key]]))
                                                 <option value="{{$users[$answers[$key]]['id']}}">{{$users[$answers[$key]]['first_name'].' '.$users[$answers[$key]]['last_name']}}</option>
                                             @endif
                                         </select>

@@ -10,6 +10,7 @@
 @endpush
 
 @section('content')
+    <a href="{{route('landing')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
     <div class="wrapper home content">
         <div class="header header-filter">
             <div class="container">

@@ -10,6 +10,7 @@
 @endpush
 
 @section('content')
+    <a href="{{ URL::previous() }}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
     <div class="wrapper home personal">
         <div class="header header-filter">
             <div class="container">
@@ -51,8 +52,10 @@
                                             @if(count($q))
                                                 @if($q[0]['num']>=10)
                                                     <span class="label label-success">{{$q[0]['num']}}</span>
-                                                @else
+                                                @elseif($q[0]['num']>=5)
                                                     <span class="label label-info">{{$q[0]['num']}}</span>
+                                                @else
+                                                    <span class="label label-danger">{{$q[0]['num']}}</span>
                                                 @endif
                                                 {{id_to_name($q[0]['id'])}}
                                             @endif
@@ -63,8 +66,10 @@
                                             @if(count($q)>1)
                                                 @if($q[1]['num']>=10)
                                                     <span class="label label-success">{{$q[1]['num']}}</span>
-                                                @else
+                                                @elseif($q[1]['num']>=5)
                                                     <span class="label label-info">{{$q[1]['num']}}</span>
+                                                @else
+                                                    <span class="label label-danger">{{$q[1]['num']}}</span>
                                                 @endif
                                                 {{id_to_name($q[1]['id'])}}
                                             @endif
@@ -75,8 +80,10 @@
                                             @if(count($q)>2)
                                                 @if($q[2]['num']>=10)
                                                     <span class="label label-success">{{$q[2]['num']}}</span>
-                                                @else
+                                                @elseif($q[2]['num']>=5)
                                                     <span class="label label-info">{{$q[2]['num']}}</span>
+                                                @else
+                                                    <span class="label label-danger">{{$q[2]['num']}}</span>
                                                 @endif
                                                 {{id_to_name($q[2]['id'])}}
                                             @endif

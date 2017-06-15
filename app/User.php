@@ -16,7 +16,7 @@ class User extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'username', 'first_name', 'last_name', 'sex', 'mobile','others'
+        'email', 'password', 'username', 'first_name', 'last_name', 'sex', 'mobile', 'others'
     ];
 
     /**
@@ -27,18 +27,64 @@ class User extends Eloquent
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function files(){
+
+    public function files()
+    {
         return $this->hasMany(File::class);
     }
 
-    public function articles(){
+    public function articles()
+    {
         return $this->hasMany(Article::class);
     }
 
     // articles written for this user
-    public function texts(){
-        return $this->hasMany(Article::class,'texter_id');
+    public function texts()
+    {
+        return $this->hasMany(Article::class, 'texter_id');
     }
+
+
+    //counts
+    public function writtenArticlesCount()
+    {
+        return $this->hasMany(Article::class)->where('cover', 'exists', false)->count();
+    }
+
+    public function writtenCoversCount()
+    {
+        return $this->hasMany(Article::class)->where('cover', 1)->count();
+    }
+
+    public function articlesCount()
+    {
+        return $this->hasMany(Article::class, 'texter_id')->where('cover', 'exists', false)->count();;
+    }
+
+    public function coversCount()
+    {
+        return $this->hasMany(Article::class, 'texter_id')->where('cover', 1)->count();;
+    }
+
+    public function isAdmin($type = 'admin')
+    {
+        $admins = [];
+        switch ($type) {
+            case 'admin':
+                $admins = admins();
+                break;
+            case 'journal':
+                $admins = journal_admins();
+                break;
+            case 'secret':
+                $admins = secret_admins();
+                break;
+        }
+        if ($this['username'] && $admins->contains($this->username))
+            return true;
+        return false;
+    }
+
 
     /**
      * The "booting" method of the model.
@@ -49,7 +95,7 @@ class User extends Eloquent
     {
         parent::boot();
 
-     //   static::addGlobalScope(new EntranceYearScope());
+        //   static::addGlobalScope(new EntranceYearScope());
     }
 
     public function scopeMain($query)

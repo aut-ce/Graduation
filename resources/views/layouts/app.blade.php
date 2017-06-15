@@ -28,7 +28,7 @@
 </head>
 <body>
     <div id="app" class="index-page">
-        <a href="{{route('landing')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
+        @include('includes.nav')
         @yield('content')
     </div>
 

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class SecreterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $admins = admins();
+        $admins = secret_admins();
         $user = Auth::user();
-        if($user['username'] && $admins->contains($user->username))
+        if(isset($user['username']) && $admins->contains($user->username))
             return $next($request);
         else
             return redirect()->route('landing');

@@ -10,6 +10,8 @@
 @endpush
 
 @section('content')
+    <a href="{{ URL::previous() }}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
+
     <div class="wrapper home personal">
         <div class="header header-filter">
             <div class="container">
@@ -24,7 +26,7 @@
                     <div class="col-md-8 col-md-offset-2 form-dialog" style="background-color:rgba(255,255,255,.7);">
                         <div class="bests-from">
                             <h3 class="text-muted">{{'متن های نوشته شده توسط: '}}{{$user['first_name'].' '.$user['last_name']}} </h3>
-                            <form class="row" action="{{route('journal.writes')}}" style="display:flex;background-color: #fff;padding: 10px">
+                            <form class="row" action="" style="display:flex;background-color: #fff;padding: 10px">
                                 <div style="width: 50%">
                                     <div class="form-group label-floating {{isset($user) ? '': 'jis-empty'}}">
                                         <label class="control-label">{{'شماره دانشجویی'}}</label>

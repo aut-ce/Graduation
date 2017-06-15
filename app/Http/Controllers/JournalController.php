@@ -21,8 +21,8 @@ class JournalController extends Controller
             Route::get('/list', 'JournalController@home')->name('home');
 
             Route::get('/cover', 'JournalController@cover')->name('cover');
-            //Route::get('/writes', 'JournalController@writes')->name('writes');
-            //Route::get('/written-for', 'JournalController@writtenFor')->name('writtenFor');
+            Route::get('/written-articles', 'JournalController@writtenArticles')->name('writtenArticles');
+            Route::get('/articles', 'JournalController@articles')->name('articles');
 
             Route::get('/', function () {
                 return redirect()->route('journal.home');
@@ -37,15 +37,10 @@ class JournalController extends Controller
 
     public function cover(Request $request)
     {
-        $covers = [];
         $user = $request->get('username');
 
         if ($user)
             $user = User::where('username', $user)->first();
-        /*
-        if ($user)
-            $covers = $user->texts()->with('user')->where('cover', 'exists', true)->get();
-        */
         return view('journal.cover', [
             'covers' => isset($user['cover']) ? $user['cover'] : 'تایید نشده',
             'user' => $user,
@@ -54,7 +49,7 @@ class JournalController extends Controller
 
     }
 
-    public function writes(Request $request)
+    public function writtenArticles(Request $request)
     {
         $articles = [];
         $user = null;
@@ -64,7 +59,12 @@ class JournalController extends Controller
             if (!$user)
                 $user = User::where('email', $username)->first();
             if ($user)
-                $articles = $user->articles()->with('texter')->where('cover', 'exists', false)->get();
+                $articles = $user->articles()
+                    ->with('texter')
+                    ->where('content', '<>', '')
+                    ->where('cover', 'exists', false)
+                    ->where('texter_id','exists',false)
+                    ->get();
         }
         return view('journal.writes', [
             'articles' => $articles,
@@ -73,7 +73,7 @@ class JournalController extends Controller
 
     }
 
-    public function writtenFor(Request $request)
+    public function articles(Request $request)
     {
         $articles = [];
         $user = null;
@@ -83,7 +83,12 @@ class JournalController extends Controller
             if (!$user)
                 $user = User::where('email', $username)->first();
             if ($user)
-                $articles = $user->texts()->with('user')->where('cover', 'exists', false)->get();
+                $articles = $user->texts()
+                    ->with('user')
+                    ->where('content', '<>', '')
+                    ->where('show','true')
+                    ->where('cover', 'exists', false)
+                    ->get();
         }
         return view('journal.written_for', [
             'articles' => $articles,

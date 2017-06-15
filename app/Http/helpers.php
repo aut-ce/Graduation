@@ -110,4 +110,31 @@ function user_to_name($user)
     return $user['first_name'] . " " . $user['last_name'];
 }
 
+function admins(){
+    return collect([
+        '9231069',
+        '9231036',
+        '9231011',
+        '9231051',
+        '9231902'
+    ]);
+}
+function journal_admins(){
+    return collect([
+        '9231069',
+        '9231030',
+        '9231073',
+        '9231011',
+    ]);
+}
+
+function secret_admins(){
+    return collect([
+        '9231069',
+    ]);
+}
+
+
+
+
 

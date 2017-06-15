@@ -3,13 +3,14 @@
 @push('styles')
 <style>
     body {
-        background: url('/img/.jpg') no-repeat fixed;
+        background: url('/img/10.jpg') no-repeat fixed;
         background-size: cover;
     }
 </style>
 @endpush
 
 @section('content')
+    <a href="{{ route('landing') }}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
     <div class="wrapper home">
         <div class="header header-filter">
             <div class="container">
@@ -19,12 +20,12 @@
                     <a href="{{route('journal.cover')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'کاور'}}
                     </a>
-                    {{--<a href="{{route('admin.writtenFor')}}?for=1" class="btn btn-raised btn-facebook sharrre">--}}
-                        {{--{{'واسه هر کی چقد نوشته شده'}}--}}
-                    {{--</a>--}}
-                    {{--<a href="{{route('admin.bests')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">--}}
-                        {{--{{'ترین ها'}}--}}
-                    {{--</a>--}}
+                    <a href="{{route('journal.articles')}}?for=1" class="btn btn-raised btn-facebook sharrre">
+                        {{'متن ها بچه ها '}}
+                    </a>
+                    <a href="{{route('journal.writtenArticles')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
+                        {{'متن برای نشریه'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">

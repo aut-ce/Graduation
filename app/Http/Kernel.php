@@ -59,6 +59,7 @@ class Kernel extends HttpKernel
         'ask.participation' => \App\Http\Middleware\AskParticipation::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'journal' => \App\Http\Middleware\JournalMiddleware::class,
+        'secreter' => \App\Http\Middleware\SecreterMiddleware::class,
         'entrance' => \App\Http\Middleware\EntracneYear::class,
     ];
 }

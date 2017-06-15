@@ -42,9 +42,12 @@ class AdminController extends Controller
         return view('admin.admin_home');
     }
 
-    public function bests()
+    public function bests(Request $request)
     {
-        $users = User::where('username', 'like', '92%')->get();
+        if($request->has('all'))
+            $users = User::get();
+        else
+            $users = User::where('username', 'like', '92%')->get();
         $res1 = BestController::titles();
         foreach ($users as $user) {
             if (!isset($user['bests_q']) || !$user['bests_q'] || $user['bests_q'] == "null")

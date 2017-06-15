@@ -16,22 +16,16 @@
 
                 <div class="row sharing-area text-center">
                     <h3 class="brand">{{'ورودی‌های ۹۲ دانشکده کامپیوتر'}}</h3>
-                    <a href="{{route('personal.main')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
-                        {{'صفحه شخصی'}}
-                    </a>
-                    <a href="{{route('content.main')}}" class="btn btn-raised btn-google-plus sharrre">
-                        {{'ارسال محتوا'}}
-                    </a>
                     <a href="{{route('content.article')}}?for=1" class="btn btn-raised btn-facebook sharrre">
                         {{'ارسال متن برای صفحه دوستان'}}
                     </a>
                     <a href="{{route('bests.main')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'ترین ها'}}
                     </a>
-                    <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-facebook sharrre">
+                    <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-primary sharrre">
                         {{'نوشتن کاور برای دوستان'}}
                     </a>
-                    <a href="{{route('bests.inst')}}" class="btn btn-raised btn-google-plus sharrre">
+                    <a href="{{route('bests.inst')}}" class="btn btn-raised btn-warning sharrre">
                         {{'ترین اساتید'}}
                     </a>
                 </div>
@@ -62,6 +56,23 @@
                     <a href="{{route('personal.cover')}}" class="btn btn-raised btn-facebook sharrre">
                         {{'انتخاب کلمه کاور از بین نوشته شده ها برای صفحه'}}
                     </a>
+                </div>
+                <div class="row sharing-area text-center">
+                   @if(Auth::user()->isAdmin('secret'))
+                        <a href="{{route('secret.home')}}" class="btn btn-raised btn-default sharrre">
+                            {{'اسپایز'}}
+                        </a>
+                   @endif
+                   @if(Auth::user()->isAdmin('journal'))
+                        <a href="{{route('journal.home')}}" class="btn btn-raised btn-primary sharrre">
+                            {{'تحریریه'}}
+                        </a>
+                   @endif
+                   @if(Auth::user()->isAdmin('admin'))
+                        <a href="{{route('admin.home')}}" class="btn btn-raised btn-warning sharrre">
+                            {{'پنل ادمین سیاه'}}
+                        </a>
+                   @endif
                 </div>
             </div>
         </div>

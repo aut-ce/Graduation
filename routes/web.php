@@ -21,3 +21,4 @@
 \App\Http\Controllers\BestController::routes();
 \App\Http\Controllers\AdminController::routes();
 \App\Http\Controllers\JournalController::routes();
+\App\Http\Controllers\SecretController::routes();
