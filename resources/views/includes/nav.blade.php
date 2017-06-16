@@ -14,7 +14,7 @@
                             {{Auth::user()['first_name'].' '.Auth::user()['last_name']}}
                         </div>
                         <div class="logo" style="width: 50px;height: 50px;display: flex;">
-                            <img  style="object-fit: cover" src="{{isset(Auth::user()['ppic']) ? cdn(Auth::user()['ppic']) : '/img/logo.jpg'}}">
+                            <img  style="object-fit: cover" src="https://www.gravatar.com/avatar/{{md5(Auth::user()['email'])}}">
                         </div>
                     @else
                         <h4>{{'فارغ‌التحصیلان ورودی ۹۲ دانشکده کامپیوتر'}}</h4>
