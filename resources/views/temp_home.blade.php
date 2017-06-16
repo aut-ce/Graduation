@@ -28,6 +28,9 @@
                     <a href="{{route('bests.inst')}}" class="btn btn-raised btn-warning sharrre">
                         {{'ترین اساتید'}}
                     </a>
+                    <a href="{{route('personal.main')}}" class="btn btn-raised btn-primary sharrre">
+                        {{'صفحه شخصی'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
