@@ -43,6 +43,11 @@
                 </li>
                 @if(Auth::check())
                     <li>
+                        <a href="/logout">
+                            <i class="material-icons">exit</i> {{'خروج'}}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('personal.main')}}">
                             <i class="material-icons">dashboard</i> {{'صفحه شخصی'}}
                         </a>
@@ -57,6 +62,7 @@
                             <i class="material-icons">people</i> {{'تغییر رمز عبور'}}
                         </a>
                     </li>
+
                 @endif
 
 
