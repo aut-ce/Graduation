@@ -109,7 +109,8 @@ class ContentController extends Controller
         return view('pages.content.article', [
             'article' => $article,
             'for' => $for,
-            'cover' => $request->get('cover'),
+            //'cover' => $request->get('cover'),
+            'cover' => false,
         ]);
     }
 

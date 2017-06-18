@@ -22,9 +22,9 @@
                     <a href="{{route('bests.main')}}" class="btn btn-raised btn-google-plus sharrre">
                         {{'ترین ها'}}
                     </a>
-                    <a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-primary sharrre">
-                        {{'نوشتن کاور برای دوستان'}}
-                    </a>
+                    {{--<a href="{{route('content.article')}}?cover=1" class="btn btn-raised btn-primary sharrre">--}}
+                        {{--{{'نوشتن کاور برای دوستان'}}--}}
+                    {{--</a>--}}
                     <a href="{{route('bests.inst')}}" class="btn btn-raised btn-warning sharrre">
                         {{'ترین اساتید'}}
                     </a>

@@ -12,13 +12,20 @@ class TestController extends Controller
 
     public static function routes()
     {
-//        Route::get('writers_for/{id}', 'TestController@test');
+        Route::get('test', 'TestController@test');
     }
 
     public function test(){
-        return 'خیلی باهوشیاااا';
-        return selectKeys(User::get(),['first_name','last_name','username']);
-        return view('pages.ask_participation');
+        /*
+        $users = User::where('username','like','92%')->get()->toArray();
+        $sum = 0;
+        foreach ($users as $u){
+            if(isset($u['participation_number']))
+                if($u['participation_number'] > $sum)
+                    $sum = $u['participation_number'];
+        }
+        dd($sum);
+        */
     }
 
 
