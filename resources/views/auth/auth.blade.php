@@ -74,7 +74,6 @@
                                     <div class="header header-success g-flex-center">
                                         <h4>{{'ورود'}}</h4><i class="material-icons g-left-margin6">person</i>
                                     </div>
-                                    <p class="text-divider">{{'برای ۹۲ ایا'}}</p>
                                     <div class="content">
 
                                         <div class="input-group">

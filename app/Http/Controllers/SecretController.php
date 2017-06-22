@@ -49,7 +49,7 @@ class SecretController extends Controller
         $users = User::orderBy('create_at')->skip($offset * 25)->take(25)->get();
         return view('secret.list', [
             'users' => $users,
-            'pages' => floor(User::count() / 25),
+            'pages' => ceil(User::count() / 25),
             'current' => $offset
         ]);
     }
