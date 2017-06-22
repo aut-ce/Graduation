@@ -41,6 +41,9 @@
                         <i class="fa fa-instagram"></i>
                     </a>
                 </li>
+                <li>
+                    <a class="github-button" href="https://github.com/aut-ceit/Graduation" data-size="large" data-show-count="true" aria-label="Star aut-ceit/Graduation on GitHub">Star</a>
+                </li>
                 @if(Auth::check())
                     <li>
                         <a href="/logout">

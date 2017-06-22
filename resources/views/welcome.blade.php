@@ -9,6 +9,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        
+        <!-- Github script -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 
         <!-- Styles -->
         <style>
