@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/select2.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     @stack('styles')
     <!-- Styles -->
 
