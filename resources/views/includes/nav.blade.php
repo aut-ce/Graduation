@@ -25,7 +25,10 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-index">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="display: flex;align-items: center">
+                <li>
+                    <a class="github-button" href="https://github.com/aut-ceit/Graduation" data-size="large" data-show-count="true" aria-label="Star aut-ceit/Graduation on GitHub">Star</a>
+                </li>
                 <li>
                     <a rel="tooltip" title="" data-placement="bottom" href="https://t.me/joinchat/AAAAAELADWOLRvLOfbRZug" target="_blank" class="btn btn-white btn-simple btn-just-icon" data-original-title="Join us on Telegram">
                         <i class="fa fa-telegram"></i>
@@ -40,9 +43,6 @@
                     <a rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/ceit_ssc/" target="_blank" class="btn btn-white btn-simple btn-just-icon" data-original-title="Follow us on Instagram">
                         <i class="fa fa-instagram"></i>
                     </a>
-                </li>
-                <li>
-                    <a class="github-button" href="https://github.com/aut-ceit/Graduation" data-size="large" data-show-count="true" aria-label="Star aut-ceit/Graduation on GitHub">Star</a>
                 </li>
                 @if(Auth::check())
                     <li>
