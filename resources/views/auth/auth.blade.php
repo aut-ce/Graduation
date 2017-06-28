@@ -19,7 +19,7 @@
             </div>
         </nav>
         <div class="wrapper">
-            <div class="header header-filter" style="background: url('img/1.jpg');background-size: 100%;">
+            <div class="header header-filter" style="background: url('img/0.jpg');background-size: 100%;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4  col-sm-6 ">
