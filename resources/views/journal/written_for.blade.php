@@ -10,7 +10,7 @@
 @endpush
 
 @section('content')
-    <a href="{{route('admin.home')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
+    <a href="{{route('journal.home')}}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
 
     <div class="wrapper home personal">
         <div class="header header-filter">
@@ -28,7 +28,7 @@
                             <h3 class="text-muted">{{'متن های نوشته شده توسط بچه ها برای: '}}{{$user['first_name'].' '.$user['last_name']}} </h3>
                             <form class="row" action="" style="display:flex;background-color: #fff;padding: 10px">
                                 <div style="width: 50%">
-                                    <div class="form-group label-floating {{isset($user) ? '': 'jis-empty'}}">
+                                    <div class="form-group label-floating {{isset($user) ? '': 'is-empty'}}">
                                         <label class="control-label">{{'شماره دانشجویی'}}</label>
                                         <input type="text" class="form-control" name="username" value="{{isset($user) ? $user['username'] : ""}}">
                                         <span class="material-input"></span></div>

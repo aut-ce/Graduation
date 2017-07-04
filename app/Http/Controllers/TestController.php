@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Route;
 use DB;
@@ -13,31 +14,34 @@ class TestController extends Controller
     public static function routes()
     {
         Route::get('test', 'TestController@test');
+        Route::get('snapshot', 'TestController@snapshot');
     }
 
-    public function test(){
-        /*
-        $users = User::where('username','like','92%')->get()->toArray();
-        $sum = 0;
-        foreach ($users as $u){
-            if(isset($u['participation_number']))
-                if($u['participation_number'] > $sum)
-                    $sum = $u['participation_number'];
+    public function test()
+    {
+
+    }
+
+    public function snapshot()
+    {
+        $users = User::where('username', 'like', '92%')->orderBy('username')->get()->toArray();
+        foreach ($users as $u) {
+            DB::table('data')->insert([
+                'username' => $u['username'],
+                'mini' => isset($u['mini_q']) ? $u['mini_q'] : '',
+                'questions' => isset($u['questions']) ? $u['questions'] : '',
+                'bests' => isset($u['bests_q']) ? $u['bests_q'] : '',
+                'bests_inst' => isset($u['bests_q_inst']) ? $u['bests_q_inst'] : '',
+                'time' => Carbon::now(),
+            ]);
         }
-        dd($sum);
-        */
     }
-
-
-
-
-
 
 
     public function select_users_from_all()
     {
         $users = DB::table('all_users')->where('username', 'like', '9231%')
-            ->orWhere('username','9213035')
+            ->orWhere('username', '9213035')
             ->get();
         foreach ($users as $u) {
             $temp =

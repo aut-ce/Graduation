@@ -130,6 +130,9 @@ class ContentController extends Controller
             $article->texter_id = $request['texter'];
         if ($request->has('cover'))
             $article->cover = 1;
+        if (isset($article['done']) && $article['done'])
+            return redirect()->back()->withErrors('این متن توسط تیم تحریریه تایید شده و قابل ادیت نیست.');
+
         $article->title = $request['title'];
         $article->content = $request['description'];
         $article->save();

@@ -23,8 +23,12 @@
                     <a href="{{route('journal.articles')}}?for=1" class="btn btn-raised btn-facebook sharrre">
                         {{'متن ها بچه ها '}}
                     </a>
-                    <a href="{{route('journal.writtenArticles')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
-                        {{'متن برای نشریه'}}
+                    <a href="{{route('journal.mini')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
+                        {{'کوتاه پاسخ'}}
+                    </a>
+
+                    <a href="{{route('journal.questions')}}" id="twitter" class="btn btn-warning">
+                        {{'بلند پاسخ'}}
                     </a>
                 </div>
                 <div class="row">

@@ -10,7 +10,7 @@
 @endpush
 
 @section('content')
-    <a href="{{ route('admin.home') }}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
+    <a href="{{ route('journal.home') }}" class="btn btn-danger return-home">{{'بازگشت'}}</a>
 
     <div class="wrapper home personal">
         <div class="header header-filter">
