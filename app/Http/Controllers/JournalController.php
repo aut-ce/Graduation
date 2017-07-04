@@ -175,7 +175,10 @@ class JournalController extends Controller
             if (!$user)
                 $user = User::where('email', $username)->first();
             if ($user)
-                $content = $user->texts()->where('cover', 'exists', false)->get();
+                $content = $user->texts()
+                    ->where('show','true')
+                    ->where('cover', 'exists', false)
+                    ->get();
         }
         return view('journal.list', [
             'content' => $content,
