@@ -33,7 +33,7 @@ class PersonalPageController extends Controller
             Route::get('/cover/reset', 'PersonalPageController@coverReset')->name('coverReset');
 
             Route::get('/', function () {
-                return redirect()->route('personal.questions');
+                return redirect()->route('personal.ppic');
             })->name('main');
         });
     }
