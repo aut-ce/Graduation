@@ -31,6 +31,7 @@ class BestController extends Controller
 
     public function bests()
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت پاسخ تمام شده است']);
         $user = Auth::user();
         $answers = $user['bests_q'] ? json_decode($user['bests_q'], true) : [];
         $users = User::whereIn('_id', $answers)->get()->keyBy('id');

@@ -40,7 +40,7 @@ class PersonalPageController extends Controller
 
     public function mini()
     {
-//        return redirect()->back()->withErrors(['first'=>'فرصت پاسخ تمام شده است']);
+        return redirect()->back()->withErrors(['first'=>'فرصت پاسخ تمام شده است']);
         $user = Auth::user();
         $answers = $user['mini_q'] ? json_decode($user['mini_q'], true) : [];
         return view('pages.personal.mini_question', [
@@ -60,6 +60,7 @@ class PersonalPageController extends Controller
 
     public function questions()
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت پاسخ تمام شده است']);
         $user = Auth::user();
         $answers = $user['questions'] ? json_decode($user['questions'], true) : [];
         return view('pages.personal.question', [
