@@ -24,6 +24,7 @@ class JournalController extends Controller
             Route::get('/written-articles', 'JournalController@writtenArticles')->name('writtenArticles');
             Route::get('/cover', 'JournalController@cover')->name('cover');
             Route::get('/articles', 'JournalController@articles')->name('articles');
+            Route::get('/free-articles', 'JournalController@freeArticles')->name('freeArticles');
 
             Route::get('/mini', 'JournalController@mini')->name('mini');
             Route::post('/mini', 'JournalController@miniAction')->name('miniAction');
@@ -180,6 +181,18 @@ class JournalController extends Controller
                     ->where('cover', 'exists', false)
                     ->get();
         }
+        return view('journal.list', [
+            'content' => $content,
+            'user' => $user
+        ]);
+    }
+
+    public function freeArticles(){
+        $user = null;
+        $content = Article::where('texter_id','exists',false)
+            ->where('cover','exists',false)
+            ->where('content','<>','')
+            ->get();
         return view('journal.list', [
             'content' => $content,
             'user' => $user

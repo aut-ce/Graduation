@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                @if(!isset($selective))
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 form-dialog" style="background-color:rgba(255,255,255,.7);">
                         <div class="bests-from">
@@ -39,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="row">
                     <div class="list col-md-8 col-md-offset-2 form-dialog">
                         <h3 class="text-muted">{{'مطالب نوشته شده برای:'}}</h3>
@@ -57,7 +59,7 @@
                             @foreach($content as $key => $item)
                                 <tr>
                                     <td class="text-center">{{$key+1}}</td>
-                                    <td>{{$item['title']}}</td>
+                                    <td style="max-width: 20rem">{{$item['title']}}</td>
                                     <td>{{isset($item['user'])?user_to_name($item['user']):''}}</td>
                                     <td>{{dateFormat($item['updated_at'])}}</td>
                                     <td class="td-actions text-right">
@@ -68,8 +70,13 @@
                                         @endif
                                     </td>
                                     <td class="td-actions text-right">
-                                        <a href="{{route('journal.editArt',$item)}}" class="btn btn-success btn-simple btn-xs" rel="tooltip"
-                                                title="{{'ویرایش'}}" type="button"><i class="fa fa-edit"></i></a>
+                                        @if(isset($selective))
+                                            <a href="{{route('selectiveEditArt',$item)}}" class="btn btn-success btn-simple btn-xs" rel="tooltip"
+                                                    title="{{'ویرایش'}}" type="button"><i class="fa fa-edit"></i></a>
+                                        @else
+                                            <a href="{{route('journal.editArt',$item)}}" class="btn btn-success btn-simple btn-xs" rel="tooltip"
+                                               title="{{'ویرایش'}}" type="button"><i class="fa fa-edit"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

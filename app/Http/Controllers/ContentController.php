@@ -46,6 +46,7 @@ class ContentController extends Controller
 
     public function file(File $file = null)
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت ویرایش تمام شده است']);
         $user = Auth::user();
         if (!$file->_id) {
             $user->files()->where('path', -1)->forceDelete();
@@ -62,6 +63,7 @@ class ContentController extends Controller
 
     public function fileAction(Request $request)
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت ویرایش تمام شده است']);
         $user = Auth::user();
         if (!$request->has('id'))
             return redirect()->route('landing');
@@ -94,6 +96,7 @@ class ContentController extends Controller
 
     public function article($article = null, Request $request)
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت ویرایش تمام شده است']);
         $user = Auth::user();
         if ($article) {
             $article = Article::where('_id', $article)->first();
@@ -116,6 +119,7 @@ class ContentController extends Controller
 
     public function articleAction($article, Request $request)
     {
+        return redirect()->back()->withErrors(['first'=>'فرصت ویرایش تمام شده است']);
         if (!$article)
             return redirect()->route('landing');
         $article = Article::where('_id', $article)->first();
