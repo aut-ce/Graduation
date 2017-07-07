@@ -30,6 +30,9 @@
                     <a href="{{route('journal.questions')}}" id="twitter" class="btn btn-warning">
                         {{'بلند پاسخ'}}
                     </a>
+                    <a href="{{route('journal.freeArticles')}}" id="twitter" class="btn btn-raised btn-twitter sharrre">
+                        {{'متن های آزاد'}}
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
