@@ -21,6 +21,7 @@ class OutputController extends Controller
 
         Route::group(['prefix' => 'output', 'as' => 'output.'], function () {
             Route::get('/json', 'OutputController@json')->name('json');
+            Route::get('/texts', 'OutputController@texts')->name('texts');
         });
     }
 
@@ -30,7 +31,6 @@ class OutputController extends Controller
         $users = User::where('username', 'like', '92%')->get();
         $mini = PersonalPageController::mini_questions();
         $questions = PersonalPageController::long_questions();
-        $fp = fopen(storage_path('temp/file.csv'), 'w');
         $output = [];
         foreach ($users as $user) {
             $mini_answers = $user['mini_q'] ? json_decode($user['mini_q'], true) : [];
@@ -56,23 +56,21 @@ class OutputController extends Controller
         return Response::download(storage_path('temp/output.json'), 'output.json', ['Content-Type: application/json']);
     }
 
-
-    public function questions(Request $request)
+    public function texts()
     {
-        $user = null;
-        $answers = [];
-        $username = $request->get('username');
-        if ($username) {
-            $user = User::where('username', $username)->first();
-            if (!$user)
-                $user = User::where('email', $username)->first();
-            if ($user)
-                $answers = $user['questions'] ? json_decode($user['questions'], true) : [];
+        $users = User::where('username', 'like', '92%')->with(['texts' => function ($query) {
+            $query->with('user');
+        }])->get();
+        $fp = fopen(storage_path('temp/file.csv'), 'w');
+        foreach ($users as $user) {
+            $output = [$user['first_name'] . ' ' . $user['last_name']];
+            foreach ($user['texts'] as $text) {
+                $output[] = $text['user']['first_name'] . ' ' . $text['user']['last_name'];
+                $output[] = $text['title'] . "\n" . $text['content'];
+            };
+            fputcsv($fp, $output);
         }
-        return view('journal.questions', [
-            'questions' => PersonalPageController::long_questions(),
-            'answers' => $answers,
-            'user' => $user
-        ]);
+        return Response::download(storage_path('temp/file.csv'), 'output.csv', ['Content-Type: text/csv']);
     }
+
 }
