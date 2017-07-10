@@ -23,3 +23,4 @@
 \App\Http\Controllers\JournalController::routes();
 \App\Http\Controllers\SecretController::routes();
 \App\Http\Controllers\SelectivePanelController::routes();
+\App\Http\Controllers\OutputController::routes();

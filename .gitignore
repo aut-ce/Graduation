@@ -5,6 +5,7 @@
 /vendor
 /.idea
 /data
+/storage/temp
 Graduation.iml
 Homestead.json
 Homestead.yaml
