@@ -59,9 +59,10 @@ class OutputController extends Controller
     public function texts()
     {
         $users = User::where('username', 'like', '92%')->with(['texts' => function ($query) {
-            $query->with('user');
+            $query->where('cover', 'exists', false)->with('user');
         }])->get();
         $fp = fopen(storage_path('temp/file.csv'), 'w');
+        fputs($fp, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
         foreach ($users as $user) {
             $output = [$user['first_name'] . ' ' . $user['last_name']];
             foreach ($user['texts'] as $text) {
