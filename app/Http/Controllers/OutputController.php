@@ -22,6 +22,7 @@ class OutputController extends Controller
         Route::group(['prefix' => 'output', 'as' => 'output.'], function () {
             Route::get('/json', 'OutputController@json')->name('json');
             Route::get('/texts', 'OutputController@texts')->name('texts');
+            Route::get('/words', 'OutputController@words')->name('words');
         });
     }
 
@@ -69,7 +70,7 @@ class OutputController extends Controller
                 'email' => isset($user['primary_email']) ? $user['primary_email'] : $user['email']
             ];
             foreach ($pics as $key => $pic) {
-                $res['pic' .($key + 1)] = cdn($pic);
+                $res['pic' . ($key + 1)] = cdn($pic);
             }
             $output[] = $res;
         }
@@ -93,6 +94,18 @@ class OutputController extends Controller
             fputcsv($fp, $output);
         }
         return Response::download(storage_path('temp/file.csv'), 'output.csv', ['Content-Type: text/csv']);
+    }
+
+    public function words()
+    {
+        $users = User::where('username', 'like', '92%')->get();
+        $questions = PersonalPageController::long_questions();
+        $output = '';
+        foreach ($users as $user) {
+            $output .= (' ' . json_decode($user['questions'], true)['توصیف چهار سال در قالب کلمات و هشتگ']);
+        }
+        file_put_contents(storage_path('temp/output.json'), json_encode(['words' => $output]));
+        return Response::download(storage_path('temp/output.json'), 'output.json', ['Content-Type: application/json']);
     }
 
 }
