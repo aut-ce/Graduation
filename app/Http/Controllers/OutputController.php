@@ -65,7 +65,8 @@ class OutputController extends Controller
                 'name' => $user['first_name'] . ' ' . $user['last_name'],
                 'mini_questions' => $mini_out,
                 'long_questions' => $q_out,
-                'texts' => $texts
+                'texts' => $texts,
+                'email' => isset($user['primary_email']) ? $user['primary_email'] : $user['email']
             ];
             foreach ($pics as $key => $pic) {
                 $res['pic' .($key + 1)] = cdn($pic);
