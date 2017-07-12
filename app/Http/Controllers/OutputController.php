@@ -28,7 +28,11 @@ class OutputController extends Controller
 
     public function json()
     {
-        $users = User::where('username', 'like', '92%')->get();
+        $users = User::where('username', 'like', '92%')
+            ->with(['texts' => function ($query) {
+                $query->where('done', 1)->where('cover', 'exists', false)->with('user');
+            }])
+            ->get();
         $mini = PersonalPageController::mini_questions();
         $questions = PersonalPageController::long_questions();
         $output = [];
@@ -37,6 +41,10 @@ class OutputController extends Controller
             $questions_answers = $user['questions'] ? json_decode($user['questions'], true) : [];
             $mini_out = [];
             $q_out = [];
+            $texts = [];
+            $pics = [];
+            if (isset($user['ppic']))
+                $pics[] = $user['ppic'];
             foreach ($questions as $key => $q)
                 if (isset($questions_answers[$q]) && $questions_answers[$q]) {
                     $q_out[] = ['q' => $q, 'a' => $questions_answers[$q]];
@@ -45,12 +53,24 @@ class OutputController extends Controller
                 if (isset($mini_answers[$q]) && $mini_answers[$q]) {
                     $mini_out[] = ['q' => $q, 'a' => $mini_answers[$q]];
                 }
-            $output[] = [
+            foreach ($user['texts'] as $text) {
+                $temp['writer'] = $text['user']['first_name'] . ' ' . $text['user']['last_name'];
+                $temp['article'] = $text['content'];
+                $texts[] = $temp;
+                if ($text['picture'] != -1)
+                    $pics[] = $text['picture'];
+            };
+            $res = [
                 'username' => $user['username'],
                 'name' => $user['first_name'] . ' ' . $user['last_name'],
                 'mini_questions' => $mini_out,
-                'long_questions' => $q_out
+                'long_questions' => $q_out,
+                'texts' => $texts
             ];
+            foreach ($pics as $key => $pic) {
+                $res['pic' .($key + 1)] = cdn($pic);
+            }
+            $output[] = $res;
         }
         file_put_contents(storage_path('temp/output.json'), json_encode($output));
         return Response::download(storage_path('temp/output.json'), 'output.json', ['Content-Type: application/json']);
