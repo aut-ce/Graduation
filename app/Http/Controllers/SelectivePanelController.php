@@ -38,6 +38,7 @@ class SelectivePanelController extends Controller
 
     public function editArt(Article $article, Request $request)
     {
+        $user = Auth::user();
         if ($user['username'] != '9231020')
             return redirect()->route('landing')->withErrors('تو که مرتی نیستی');
         if (!$article)

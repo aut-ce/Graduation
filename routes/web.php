@@ -12,15 +12,16 @@
 */
 
 \App\Http\Controllers\AuthController::routes();
-\App\Http\Controllers\TestController::routes();
-\App\Http\Controllers\HomeController::routes();
-\App\Http\Controllers\AskController::routes();
-\App\Http\Controllers\PersonalPageController::routes();
-\App\Http\Controllers\ContentController::routes();
-\App\Http\Controllers\SelectController::routes();
-\App\Http\Controllers\BestController::routes();
-\App\Http\Controllers\AdminController::routes();
-\App\Http\Controllers\JournalController::routes();
-\App\Http\Controllers\SecretController::routes();
-\App\Http\Controllers\SelectivePanelController::routes();
-\App\Http\Controllers\OutputController::routes();
+Route::get('/', 'Auth\LoginController@showLoginForm');
+//\App\Http\Controllers\TestController::routes();
+//\App\Http\Controllers\HomeController::routes();
+//\App\Http\Controllers\AskController::routes();
+//\App\Http\Controllers\PersonalPageController::routes();
+//\App\Http\Controllers\ContentController::routes();
+//\App\Http\Controllers\SelectController::routes();
+//\App\Http\Controllers\BestController::routes();
+//\App\Http\Controllers\AdminController::routes();
+//\App\Http\Controllers\JournalController::routes();
+//\App\Http\Controllers\SecretController::routes();
+//\App\Http\Controllers\SelectivePanelController::routes();
+//\App\Http\Controllers\OutputController::routes();

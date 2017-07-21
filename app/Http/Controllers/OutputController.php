@@ -99,7 +99,6 @@ class OutputController extends Controller
     public function words()
     {
         $users = User::where('username', 'like', '92%')->get();
-        $questions = PersonalPageController::long_questions();
         $output = '';
         foreach ($users as $user) {
             $output .= (' ' . json_decode($user['questions'], true)['توصیف چهار سال در قالب کلمات و هشتگ']);
