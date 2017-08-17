@@ -8,3 +8,11 @@ services:
             - ./data/db:/data/db/
             - ./data/log:/var/log/mongodb/
             - ./data/share:/v-share/
+    mongo-express:
+            image: mongo-express:latest
+            depends_on:
+                  - mongo
+            ports:
+                - "8081:8081"
+            env_file:
+                - docker-compose/express.env
