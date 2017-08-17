@@ -7,6 +7,7 @@
 /data
 /storage/temp
 Graduation.iml
+/docker-compose/express.env
 Homestead.json
 Homestead.yaml
 .env
